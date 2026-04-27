@@ -8,26 +8,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:#f0f6ff;color:#1e3a5f;min-height:100vh;}
-
-/* HEADER */
 .header{background:linear-gradient(135deg,#1565c0 0%,#0d47a1 60%,#0a2e6e 100%);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(13,71,161,0.4);}
 .header-left{display:flex;align-items:center;gap:16px;}
 .logo-img{height:56px;background:white;border-radius:10px;padding:4px 10px;object-fit:contain;}
 .header-title{font-size:20px;font-weight:800;color:white;}
 .header-sub{font-size:12px;color:rgba(255,255,255,0.75);margin-top:2px;}
 .header-date{font-size:12px;color:rgba(255,255,255,0.8);text-align:right;}
-
-/* NAV */
 .nav{background:#1565c0;padding:0 32px;display:flex;gap:2px;overflow-x:auto;border-bottom:2px solid #0d47a1;}
 .tab{padding:13px 18px;cursor:pointer;font-size:12px;font-weight:600;color:rgba(255,255,255,0.65);border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;}
 .tab:hover{color:white;}
 .tab.active{color:white;border-bottom-color:#64b5f6;}
-
-/* MAIN */
 .main{padding:24px 32px;max-width:1500px;margin:0 auto;}
 .section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5c8ab0;margin-bottom:12px;margin-top:24px;}
-
-/* KPI CARDS */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
 .kpi-card{background:white;border-radius:14px;padding:18px;border:1px solid #dbeafe;box-shadow:0 2px 8px rgba(21,101,192,0.08);position:relative;overflow:hidden;}
 .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
@@ -43,23 +35,21 @@ body{font-family:'Inter',sans-serif;background:#f0f6ff;color:#1e3a5f;min-height:
 .badge-green{background:rgba(67,160,71,.12);color:#2e7d32;}
 .badge-yellow{background:rgba(251,140,0,.12);color:#e65100;}
 .badge-red{background:rgba(229,57,53,.12);color:#c62828;}
-
-/* PROGRESS */
 .progress-wrap{margin-top:8px;}
-.progress-label{display:flex;justify-content:space-between;font-size:10px;color:#90a4ae;margin-bottom:3px;}
 .progress-bar{height:5px;background:#e3f2fd;border-radius:99px;overflow:hidden;}
 .progress-fill{height:100%;border-radius:99px;transition:width .8s ease;}
 .fill-green{background:linear-gradient(90deg,#388e3c,#66bb6a);}
 .fill-yellow{background:linear-gradient(90deg,#f57c00,#ffa726);}
 .fill-red{background:linear-gradient(90deg,#c62828,#ef5350);}
 .fill-blue{background:linear-gradient(90deg,#1565c0,#42a5f5);}
-
-/* TABLE */
-.table-wrap{background:white;border-radius:14px;border:1px solid #dbeafe;overflow:hidden;margin-top:8px;box-shadow:0 2px 8px rgba(21,101,192,0.06);}
+.table-wrap{background:white;border-radius:14px;border:1px solid #dbeafe;overflow-x:auto;margin-top:8px;box-shadow:0 2px 8px rgba(21,101,192,0.06);scrollbar-width:thin;scrollbar-color:#90c4f8 #e3f2fd;}
+.table-wrap::-webkit-scrollbar{height:7px;}
+.table-wrap::-webkit-scrollbar-track{background:#e3f2fd;border-radius:99px;}
+.table-wrap::-webkit-scrollbar-thumb{background:#90c4f8;border-radius:99px;}
 table{width:100%;border-collapse:collapse;font-size:12px;}
 thead tr{background:#e3f2fd;}
-th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
-td{padding:11px 14px;border-top:1px solid #e3f2fd;vertical-align:middle;}
+th{padding:10px 14px;text-align:center;font-size:10px;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+td{padding:11px 14px;border-top:1px solid #e3f2fd;vertical-align:middle;text-align:center;}
 tr:hover td{background:#f5f9ff;}
 tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;}
 .sup-name{font-weight:700;color:#1e3a5f;}
@@ -68,29 +58,25 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
 .chip-yellow{background:rgba(251,140,0,.12);color:#e65100;}
 .chip-red{background:rgba(229,57,53,.12);color:#c62828;}
 .chip-blue{background:rgba(21,101,192,.1);color:#1565c0;}
-
-/* VENDOR TABLE */
 .vendor-section{margin-top:20px;}
 .vendor-section-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1565c0;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #e3f2fd;}
 .vendor-table-wrap{background:white;border-radius:12px;border:1px solid #dbeafe;overflow-x:auto;box-shadow:0 2px 8px rgba(21,101,192,0.06);}
-.vendor-table-wrap table{font-size:11px;}
+.vendor-table-wrap table{font-size:13px;}
 .vendor-table-wrap thead tr{background:#e8f4fd;}
-.vendor-table-wrap th{font-size:9px;padding:9px 12px;color:#1565c0;}
-.vendor-table-wrap td{padding:9px 12px;border-top:1px solid #f0f7ff;}
-.vendor-name{font-weight:600;color:#1e3a5f;white-space:nowrap;}
-
-/* INDUSTRY BLOCK */
+.vendor-table-wrap th{font-size:11px;padding:11px 14px;color:#1565c0;text-align:center;font-weight:700;}
+.vendor-table-wrap td{padding:11px 14px;border-top:1px solid #f0f7ff;text-align:center;color:#000000;font-weight:500;}
+.vendor-table-wrap tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;color:#1e3a5f;}
+.vendor-name{font-weight:700;color:#000000;white-space:nowrap;}
 .industry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px;}
 .industry-card{background:white;border-radius:12px;padding:16px;border:1px solid #dbeafe;box-shadow:0 2px 6px rgba(21,101,192,0.06);}
 .industry-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #e3f2fd;}
 .industry-lactalis{color:#1565c0;border-bottom-color:#1565c0;}
 .industry-bimbo{color:#e65100;border-bottom-color:#fb8c00;}
 .industry-fini{color:#6a1b9a;border-bottom-color:#ab47bc;}
+.industry-catupiry{color:#00695c;border-bottom-color:#26a69a;}
 .ind-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .ind-row-label{font-size:11px;color:#5c8ab0;}
 .ind-row-val{font-size:14px;font-weight:800;color:#1e3a5f;}
-
-/* INDIVIDUAL */
 .ind-sup-header{background:white;border-radius:14px;padding:20px;border:1px solid #dbeafe;box-shadow:0 2px 8px rgba(21,101,192,0.08);display:flex;align-items:center;gap:16px;margin-bottom:4px;}
 .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1565c0,#42a5f5);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:white;flex-shrink:0;}
 .ind-name{font-size:18px;font-weight:800;color:#1e3a5f;}
@@ -98,18 +84,13 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
 .ind-fat-pct{margin-left:auto;text-align:right;}
 .ind-fat-pct .big{font-size:30px;font-weight:800;}
 .ind-fat-pct .small{font-size:11px;color:#90a4ae;}
-
 .ind-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px;}
 .ind-kpi-card{background:white;border-radius:12px;padding:14px;border:1px solid #dbeafe;box-shadow:0 1px 4px rgba(21,101,192,0.06);}
 .ind-kpi-label{font-size:10px;font-weight:700;color:#5c8ab0;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
 .ind-kpi-val{font-size:20px;font-weight:800;color:#1e3a5f;}
 .ind-kpi-sub{font-size:10px;color:#90a4ae;margin-top:2px;}
-
-/* VIEWS */
 .view{display:none;}
 .view.active{display:block;}
-
-/* FOOTER */
 .footer{text-align:center;padding:18px;font-size:10px;color:#90a4ae;margin-top:16px;}
 </style>
 </head>
@@ -124,7 +105,7 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
       <div class="header-sub">Acompanhamento Mensal de Performance | Supervisores & Vendedores</div>
     </div>
   </div>
-  <div class="header-date" id="currentDate"></div>
+  <div class="header-date">Abril de 2026</div>
 </div>
 
 <div class="nav">
@@ -142,37 +123,36 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
 
 <div class="main">
 
-<!-- VISÃO GERAL -->
 <div class="view active" id="view-geral">
   <div class="section-title">Consolidado Geral da Equipe — Mês Atual</div>
   <div class="kpi-grid">
     <div class="kpi-card blue">
       <div class="kpi-label">💰 Faturamento</div>
-      <div class="kpi-value">R$ 4,76M</div>
+      <div class="kpi-value">R$ 6,55M</div>
       <div class="kpi-sub">Meta: R$ 9,15M</div>
-      <span class="kpi-badge badge-yellow">52,0% atingido</span>
-      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-yellow" style="width:52%"></div></div></div>
+      <span class="kpi-badge badge-yellow">71,7% atingido</span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-yellow" style="width:71.7%"></div></div></div>
     </div>
     <div class="kpi-card sky">
       <div class="kpi-label">✅ Positivação ≥ R$400</div>
-      <div class="kpi-value">1.859</div>
-      <div class="kpi-sub">Meta: 4.343 clientes</div>
-      <span class="kpi-badge badge-red">42,8% atingido</span>
-      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-red" style="width:42.8%"></div></div></div>
+      <div class="kpi-value">2.813</div>
+      <div class="kpi-sub">Meta: 4.114 clientes</div>
+      <span class="kpi-badge badge-yellow">68,4% atingido</span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-yellow" style="width:68.4%"></div></div></div>
     </div>
     <div class="kpi-card blue">
       <div class="kpi-label">🔄 DN Lactalis</div>
-      <div class="kpi-value">2.509</div>
-      <div class="kpi-sub">Meta: 3.722 PDVs</div>
-      <span class="kpi-badge badge-yellow">67,4% atingido</span>
-      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-blue" style="width:67.4%"></div></div></div>
+      <div class="kpi-value">2.909</div>
+      <div class="kpi-sub">Meta: 3.724 PDVs</div>
+      <span class="kpi-badge badge-yellow">78,1% atingido</span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-blue" style="width:78.1%"></div></div></div>
     </div>
     <div class="kpi-card sky">
       <div class="kpi-label">📦 CM Lactalis</div>
-      <div class="kpi-value">307</div>
-      <div class="kpi-sub">Meta: 1.120 PDVs</div>
-      <span class="kpi-badge badge-red">27,4% atingido</span>
-      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-red" style="width:27.4%"></div></div></div>
+      <div class="kpi-value">435</div>
+      <div class="kpi-sub">Meta: 1.118 PDVs</div>
+      <span class="kpi-badge badge-red">38,9% atingido</span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill fill-red" style="width:38.9%"></div></div></div>
     </div>
   </div>
 
@@ -205,10 +185,14 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
       <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val" id="g-dn-fin"></span></div>
       <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val" id="g-cm-fin"></span></div>
     </div>
+    <div class="industry-card">
+      <div class="industry-name industry-catupiry">🧀 Catupiry</div>
+      <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val" id="g-dn-cat"></span></div>
+      <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val" id="g-cm-cat"></span></div>
+    </div>
   </div>
 </div>
 
-<!-- RANKING -->
 <div class="view" id="view-ranking">
   <div class="section-title">Ranking de Supervisores</div>
   <div class="table-wrap">
@@ -216,184 +200,169 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
       <thead><tr>
         <th>#</th><th>Supervisor</th>
         <th>Faturamento</th><th>% Fat.</th>
+        <th>Volume (kg)</th>
         <th>Positivação</th><th>% Pos.</th>
         <th>Trocas %</th><th>Devol. %</th>
-        <th>DN Lac.</th><th>% DN</th>
-        <th>CM Lac.</th><th>% CM</th>
+        <th>DN Lac.</th><th>% DN Lac.</th>
+        <th>CM Lac.</th><th>% CM Lac.</th>
       </tr></thead>
       <tbody id="rankingBody"></tbody>
     </table>
   </div>
 </div>
 
-<!-- INDIVIDUAL SUPERVISOR VIEWS -->
 <div id="sup-views"></div>
 
 </div>
 <div class="footer">JBS Frios · Dashboard Comercial · Distribuidor Autorizado</div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
 const supervisores = [
-  {nome:'Alex',     fatMeta:1474000, fatReal:659269.31,  posMeta:707.7,  posReal:247, trocaMeta:0.015,trocaReal:0.02653,devMeta:0.01,devReal:0.00688, dnMeta:600, dnReal:355, cmMeta:180,cmReal:9},
-  {nome:'Andreia',  fatMeta:2070000, fatReal:1037228.70, posMeta:630,    posReal:345, trocaMeta:0.015,trocaReal:0.02067,devMeta:0.01,devReal:0.00426, dnMeta:600, dnReal:545, cmMeta:180,cmReal:22},
-  {nome:'Camila',   fatMeta:808500,  fatReal:389073.22,  posMeta:296.1,  posReal:154, trocaMeta:0.015,trocaReal:0.02402,devMeta:0.01,devReal:0.01695, dnMeta:300, dnReal:224, cmMeta:90, cmReal:3},
-  {nome:'Gleidson', fatMeta:1122000, fatReal:643770.43,  posMeta:873.6,  posReal:372, trocaMeta:0.015,trocaReal:0.01899,devMeta:0.01,devReal:0.00148, dnMeta:600, dnReal:408, cmMeta:180,cmReal:29},
-  {nome:'Israel',   fatMeta:680000,  fatReal:365570.69,  posMeta:43.4,   posReal:44,  trocaMeta:0.025,trocaReal:0.04637,devMeta:0.01,devReal:0.00313, dnMeta:22,  dnReal:19,  cmMeta:10, cmReal:7},
-  {nome:'Jeiziane', fatMeta:802000,  fatReal:383512.41,  posMeta:600,    posReal:259, trocaMeta:0.015,trocaReal:0.02018,devMeta:0.01,devReal:0.01180, dnMeta:500, dnReal:259, cmMeta:150,cmReal:23},
-  {nome:'Lucas',    fatMeta:1280000, fatReal:663224.94,  posMeta:654.5,  posReal:254, trocaMeta:0.015,trocaReal:0.01443,devMeta:0.01,devReal:0.00227, dnMeta:600, dnReal:429, cmMeta:180,cmReal:84},
-  {nome:'Rodrigo',  fatMeta:910000,  fatReal:616028.62,  posMeta:538,    posReal:184, trocaMeta:0.015,trocaReal:0.02526,devMeta:0.01,devReal:0.00652, dnMeta:500, dnReal:270, cmMeta:150,cmReal:130},
+  {nome:'Alex',     fatMeta:1474000, fatReal:894862.82,  posMeta:710,   posReal:557, trocaMeta:0.015,trocaReal:0.02609,devMeta:0.01,devReal:0.02561, dnMeta:600, dnReal:412, cmMeta:180,cmReal:12},
+  {nome:'Andreia',  fatMeta:2070000, fatReal:1501338.93, posMeta:630,   posReal:575, trocaMeta:0.015,trocaReal:0.01438,devMeta:0.01,devReal:0.01438, dnMeta:600, dnReal:601, cmMeta:180,cmReal:46},
+  {nome:'Camila',   fatMeta:808500,  fatReal:531911.59,  posMeta:302,   posReal:186, trocaMeta:0.015,trocaReal:0.01757,devMeta:0.01,devReal:0.01711, dnMeta:300, dnReal:243, cmMeta:90, cmReal:12},
+  {nome:'Gleidson', fatMeta:1122000, fatReal:828979.43,  posMeta:632.8, posReal:336, trocaMeta:0.015,trocaReal:0.01776,devMeta:0.01,devReal:0.00115, dnMeta:600, dnReal:521, cmMeta:180,cmReal:53},
+  {nome:'Israel',   fatMeta:680000,  fatReal:484508.61,  posMeta:44.1,  posReal:45,  trocaMeta:0.025,trocaReal:0.09255,devMeta:0.01,devReal:0.01204, dnMeta:24,  dnReal:24,  cmMeta:8.4,cmReal:4},
+  {nome:'Jeiziane', fatMeta:802000,  fatReal:477237.68,  posMeta:600,   posReal:307, trocaMeta:0.015,trocaReal:0.01565,devMeta:0.01,devReal:0.01741, dnMeta:500, dnReal:301, cmMeta:150,cmReal:34},
+  {nome:'Lucas',    fatMeta:1280000, fatReal:919832.41,  posMeta:657,   posReal:423, trocaMeta:0.015,trocaReal:0.01595,devMeta:0.01,devReal:0.00254, dnMeta:600, dnReal:474, cmMeta:180,cmReal:108},
+  {nome:'Rodrigo',  fatMeta:910000,  fatReal:916387.48,  posMeta:538,   posReal:384, trocaMeta:0.015,trocaReal:0.01702,devMeta:0.01,devReal:0.00520, dnMeta:500, dnReal:333, cmMeta:150,cmReal:166},
 ];
 
 const vendedores = [
   // ALEX
-  {nome:'CESAR DIAS',           sup:'Alex',    fat:73310.6,  dev:0,       pdev:0,          pos:47,  troca:993.16,   ptroca:0.013547, dnLac:61,  cmLac:1,  dnBim:27,  cmBim:0,  dnFin:8,  cmFin:0},
-  {nome:'CLAUBELINO SANTOS',    sup:'Alex',    fat:69787.5,  dev:340.02,  pdev:0.004872,   pos:44,  troca:839.03,   ptroca:0.012023, dnLac:49,  cmLac:0,  dnBim:9,   cmBim:0,  dnFin:11, cmFin:0},
-  {nome:'EDSON CORREIA',        sup:'Alex',    fat:46223.5,  dev:0,       pdev:0,          pos:37,  troca:4833.23,  ptroca:0.104562, dnLac:0,   cmLac:0,  dnBim:48,  cmBim:1,  dnFin:3,  cmFin:0},
-  {nome:'ILMA MOURA',           sup:'Alex',    fat:64813.5,  dev:0,       pdev:0,          pos:41,  troca:1313.54,  ptroca:0.020266, dnLac:58,  cmLac:2,  dnBim:0,   cmBim:0,  dnFin:3,  cmFin:0},
-  {nome:'JEFERSON SILVA',       sup:'Alex',    fat:54638.7,  dev:0,       pdev:0,          pos:30,  troca:1159.57,  ptroca:0.021200, dnLac:13,  cmLac:0,  dnBim:61,  cmBim:1,  dnFin:0,  cmFin:0},
-  {nome:'JONES FERNANDES',      sup:'Alex',    fat:143811,   dev:2682.83, pdev:0.018655,   pos:67,  troca:2471.59,  ptroca:0.017186, dnLac:68,  cmLac:2,  dnBim:51,  cmBim:0,  dnFin:29, cmFin:0},
-  {nome:'JORGE REIS',           sup:'Alex',    fat:77023.8,  dev:0,       pdev:0,          pos:51,  troca:1349.29,  ptroca:0.017518, dnLac:62,  cmLac:1,  dnBim:52,  cmBim:1,  dnFin:7,  cmFin:0},
-  {nome:'UELESSON OLIVEIRA',    sup:'Alex',    fat:70338.8,  dev:0,       pdev:0,          pos:31,  troca:3314.86,  ptroca:0.047127, dnLac:0,   cmLac:0,  dnBim:37,  cmBim:8,  dnFin:2,  cmFin:0},
-  {nome:'UELINTON MENDES',      sup:'Alex',    fat:59322.1,  dev:1512.96, pdev:0.025504,   pos:55,  troca:1215.30,  ptroca:0.020487, dnLac:44,  cmLac:3,  dnBim:44,  cmBim:0,  dnFin:15, cmFin:0},
-
+  {nome:'CESAR DIAS',        sup:'Alex',    fat:93851.3,  dev:0,       pdev:0,        pos:59,  troca:1428.04, ptroca:0.015216, dnLac:68,  cmLac:1,  dnBim:30,  cmBim:0,  dnFin:12, cmFin:0, dnCat:23, cmCat:0, vol:4753.56},
+  {nome:'CLAUBELINO SANTOS', sup:'Alex',    fat:95550.3,  dev:340.02,  pdev:0.003559, pos:52,  troca:1329.36, ptroca:0.013913, dnLac:60,  cmLac:0,  dnBim:12,  cmBim:0,  dnFin:19, cmFin:0, dnCat:15, cmCat:0, vol:4445.24},
+  {nome:'EDSON CORREIA',     sup:'Alex',    fat:55296.1,  dev:0,       pdev:0,        pos:46,  troca:5063.61, ptroca:0.091573, dnLac:0,   cmLac:0,  dnBim:58,  cmBim:2,  dnFin:4,  cmFin:0, dnCat:0,  cmCat:0, vol:2093.88},
+  {nome:'ILMA MOURA',        sup:'Alex',    fat:89730.9,  dev:0,       pdev:0,        pos:44,  troca:1336.49, ptroca:0.014894, dnLac:66,  cmLac:3,  dnBim:0,   cmBim:0,  dnFin:4,  cmFin:0, dnCat:20, cmCat:0, vol:5419.31},
+  {nome:'JEFERSON SILVA',    sup:'Alex',    fat:76030.7,  dev:0,       pdev:0,        pos:33,  troca:2491.84, ptroca:0.032774, dnLac:13,  cmLac:0,  dnBim:73,  cmBim:3,  dnFin:0,  cmFin:0, dnCat:52, cmCat:0, vol:2657.14},
+  {nome:'JONES FERNANDES',   sup:'Alex',    fat:197842,   dev:8051.02, pdev:0.040694, pos:79,  troca:2626.46, ptroca:0.013276, dnLac:78,  cmLac:2,  dnBim:64,  cmBim:2,  dnFin:35, cmFin:0, dnCat:52, cmCat:0, vol:8597.09},
+  {nome:'JORGE REIS',        sup:'Alex',    fat:105612,   dev:0,       pdev:0,        pos:66,  troca:2440.12, ptroca:0.023105, dnLac:73,  cmLac:1,  dnBim:57,  cmBim:7,  dnFin:7,  cmFin:0, dnCat:22, cmCat:0, vol:4907.73},
+  {nome:'UELESSON OLIVEIRA', sup:'Alex',    fat:93044.7,  dev:0,       pdev:0,        pos:34,  troca:4324.81, ptroca:0.046481, dnLac:0,   cmLac:0,  dnBim:40,  cmBim:10, dnFin:2,  cmFin:0, dnCat:0,  cmCat:0, vol:3719.59},
+  {nome:'UELINTON MENDES',   sup:'Alex',    fat:87904.4,  dev:1512.96, pdev:0.017211, pos:69,  troca:1880.88, ptroca:0.021397, dnLac:54,  cmLac:5,  dnBim:57,  cmBim:1,  dnFin:17, cmFin:0, dnCat:20, cmCat:0, vol:3545.45},
   // ANDREIA
-  {nome:'AGNALDO SILVA',        sup:'Andreia', fat:12176.4,  dev:0,       pdev:0,          pos:11,  troca:131.46,   ptroca:0.010796, dnLac:0,   cmLac:0,  dnBim:0,   cmBim:0,  dnFin:0,  cmFin:0},
-  {nome:'ANDRÉ RODRIGUES',      sup:'Andreia', fat:94937.7,  dev:735.41,  pdev:0.007746,   pos:59,  troca:2188.92,  ptroca:0.023056, dnLac:108, cmLac:9,  dnBim:0,   cmBim:0,  dnFin:32, cmFin:0},
-  {nome:'BRUNO OLIVEIRA',       sup:'Andreia', fat:222327,   dev:1222.29, pdev:0.005498,   pos:106, troca:4449.77,  ptroca:0.020015, dnLac:135, cmLac:7,  dnBim:111, cmBim:3,  dnFin:44, cmFin:0},
-  {nome:'EVANILSON NOVAIS',     sup:'Andreia', fat:120012,   dev:794.18,  pdev:0.006617,   pos:85,  troca:2598.95,  ptroca:0.021656, dnLac:0,   cmLac:0,  dnBim:100, cmBim:7,  dnFin:0,  cmFin:0},
-  {nome:'EVERALDO ALVES',       sup:'Andreia', fat:122548,   dev:0,       pdev:0,          pos:87,  troca:2787.87,  ptroca:0.022749, dnLac:136, cmLac:4,  dnBim:0,   cmBim:0,  dnFin:31, cmFin:0},
-  {nome:'GABRIEL PEREIRA',      sup:'Andreia', fat:119824,   dev:0,       pdev:0,          pos:68,  troca:1785.97,  ptroca:0.014905, dnLac:92,  cmLac:0,  dnBim:0,   cmBim:0,  dnFin:45, cmFin:0},
-  {nome:'JOELSON MIRANDA',      sup:'Andreia', fat:109913,   dev:1094.38, pdev:0.009957,   pos:64,  troca:1726.73,  ptroca:0.015710, dnLac:0,   cmLac:0,  dnBim:87,  cmBim:1,  dnFin:0,  cmFin:0},
-  {nome:'LARISSA MENDES',       sup:'Andreia', fat:74290.6,  dev:0,       pdev:0,          pos:32,  troca:1615.27,  ptroca:0.021743, dnLac:0,   cmLac:0,  dnBim:56,  cmBim:3,  dnFin:0,  cmFin:0},
-  {nome:'MARIA ELIZABETE',      sup:'Andreia', fat:86297.8,  dev:569.98,  pdev:0.006605,   pos:70,  troca:1902.20,  ptroca:0.022042, dnLac:0,   cmLac:0,  dnBim:105, cmBim:11, dnFin:0,  cmFin:0},
-  {nome:'ROMILSON ALVES',       sup:'Andreia', fat:87078.2,  dev:0,       pdev:0,          pos:32,  troca:2387.57,  ptroca:0.027419, dnLac:74,  cmLac:2,  dnBim:0,   cmBim:0,  dnFin:14, cmFin:0},
-
+  {nome:'AGNALDO SILVA',     sup:'Andreia', fat:56640.9,  dev:0,       pdev:0,        pos:42,  troca:131.46,  ptroca:0.002321, dnLac:0,   cmLac:0,  dnBim:84,  cmBim:1,  dnFin:0,  cmFin:0, dnCat:13, cmCat:0, vol:3092.32},
+  {nome:'ANDRÉ RODRIGUES',   sup:'Andreia', fat:141620,   dev:735.41,  pdev:0.005193, pos:82,  troca:2188.92, ptroca:0.015456, dnLac:124, cmLac:11, dnBim:0,   cmBim:0,  dnFin:41, cmFin:0, dnCat:0,  cmCat:0, vol:7866.47},
+  {nome:'BRUNO OLIVEIRA',    sup:'Andreia', fat:274138,   dev:1222.29, pdev:0.004459, pos:114, troca:4449.77, ptroca:0.016232, dnLac:143, cmLac:16, dnBim:0,   cmBim:0,  dnFin:53, cmFin:0, dnCat:14, cmCat:0, vol:13576.7},
+  {nome:'EVANILSON NOVAIS',  sup:'Andreia', fat:174653,   dev:794.18,  pdev:0.004547, pos:105, troca:2598.95, ptroca:0.014881, dnLac:0,   cmLac:0,  dnBim:218, cmBim:16, dnFin:0,  cmFin:0, dnCat:35, cmCat:0, vol:9768.4},
+  {nome:'EVERALDO ALVES',    sup:'Andreia', fat:173828,   dev:0,       pdev:0,        pos:112, troca:2787.87, ptroca:0.016038, dnLac:149, cmLac:14, dnBim:0,   cmBim:0,  dnFin:38, cmFin:0, dnCat:0,  cmCat:0, vol:9329.99},
+  {nome:'GABRIEL PEREIRA',   sup:'Andreia', fat:168445,   dev:0,       pdev:0,        pos:85,  troca:1797.71, ptroca:0.010672, dnLac:104, cmLac:0,  dnBim:0,   cmBim:0,  dnFin:54, cmFin:0, dnCat:0,  cmCat:0, vol:8541.88},
+  {nome:'JOELSON MIRANDA',   sup:'Andreia', fat:159819,   dev:1094.38, pdev:0.006848, pos:85,  troca:1726.73, ptroca:0.010804, dnLac:0,   cmLac:0,  dnBim:92,  cmBim:1,  dnFin:0,  cmFin:0, dnCat:42, cmCat:0, vol:7641.88},
+  {nome:'LARISSA MENDES',    sup:'Andreia', fat:103078,   dev:0,       pdev:0,        pos:43,  troca:1615.27, ptroca:0.015670, dnLac:0,   cmLac:0,  dnBim:65,  cmBim:5,  dnFin:0,  cmFin:0, dnCat:22, cmCat:0, vol:3720.71},
+  {nome:'MARIA ELIZABETE',   sup:'Andreia', fat:138087,   dev:1311.9,  pdev:0.009501, pos:85,  troca:1902.2,  ptroca:0.013775, dnLac:0,   cmLac:0,  dnBim:117, cmBim:19, dnFin:0,  cmFin:0, dnCat:40, cmCat:0, vol:7202.4},
+  {nome:'ROMILSON ALVES',    sup:'Andreia', fat:111029,   dev:0,       pdev:0,        pos:42,  troca:2387.57, ptroca:0.021504, dnLac:81,  cmLac:5,  dnBim:0,   cmBim:0,  dnFin:21, cmFin:0, dnCat:0,  cmCat:0, vol:6282.19},
   // CAMILA
-  {nome:'CAMILA FERREIRA',      sup:'Camila',  fat:226894,   dev:3671.16, pdev:0.016180,   pos:48,  troca:5706.50,  ptroca:0.025151, dnLac:63,  cmLac:3,  dnBim:55,  cmBim:6,  dnFin:18, cmFin:0},
-  {nome:'GS ESTRATEGIA',        sup:'Camila',  fat:7005.69,  dev:65.88,   pdev:0.009404,   pos:5,   troca:0,        ptroca:0,        dnLac:12,  cmLac:0,  dnBim:7,   cmBim:0,  dnFin:1,  cmFin:0},
-  {nome:'HELLEN GOMES',         sup:'Camila',  fat:114303,   dev:2515.22, pdev:0.022005,   pos:68,  troca:2630.78,  ptroca:0.023016, dnLac:105, cmLac:0,  dnBim:90,  cmBim:3,  dnFin:45, cmFin:0},
-  {nome:'JAMILE GONCALVES',     sup:'Camila',  fat:40870.4,  dev:343.85,  pdev:0.008413,   pos:22,  troca:1009.31,  ptroca:0.024695, dnLac:44,  cmLac:0,  dnBim:36,  cmBim:0,  dnFin:17, cmFin:0},
-
+  {nome:'CAMILA FERREIRA',   sup:'Camila',  fat:309337,   dev:6503.8,  pdev:0.021025, pos:53,  troca:5706.5,  ptroca:0.018448, dnLac:67,  cmLac:7,  dnBim:57,  cmBim:8,  dnFin:21, cmFin:0, dnCat:17, cmCat:0, vol:14339.3},
+  {nome:'GS ESTRATEGIA',     sup:'Camila',  fat:11980.6,  dev:65.88,   pdev:0.005499, pos:11,  troca:0,       ptroca:0,        dnLac:12,  cmLac:0,  dnBim:9,   cmBim:0,  dnFin:1,  cmFin:0, dnCat:6,  cmCat:0, vol:651.24},
+  {nome:'HELLEN GOMES',      sup:'Camila',  fat:156893,   dev:2530.21, pdev:0.016127, pos:84,  troca:2630.78, ptroca:0.016768, dnLac:115, cmLac:4,  dnBim:101, cmBim:4,  dnFin:59, cmFin:0, dnCat:10, cmCat:0, vol:8683.17},
+  {nome:'JAMILE GONCALVES',  sup:'Camila',  fat:53701.2,  dev:0,       pdev:0,        pos:31,  troca:1009.31, ptroca:0.018795, dnLac:49,  cmLac:1,  dnBim:41,  cmBim:0,  dnFin:20, cmFin:0, dnCat:3,  cmCat:0, vol:2572.86},
   // GLEIDSON
-  {nome:'EDVALDO',              sup:'Gleidson', fat:77783,   dev:160.32,  pdev:0.002061,   pos:40,  troca:1619.63,  ptroca:0.020822, dnLac:69,  cmLac:8,  dnBim:0,   cmBim:0,  dnFin:20, cmFin:0},
-  {nome:'GABRIEL SODRE',        sup:'Gleidson', fat:61352.4, dev:0,       pdev:0,          pos:42,  troca:1350.34,  ptroca:0.022010, dnLac:64,  cmLac:9,  dnBim:0,   cmBim:0,  dnFin:18, cmFin:0},
-  {nome:'HIAN RIBEIRO',         sup:'Gleidson', fat:166716,  dev:0,       pdev:0,          pos:104, troca:2752.28,  ptroca:0.016509, dnLac:137, cmLac:10, dnBim:0,   cmBim:0,  dnFin:63, cmFin:0},
-  {nome:'MARCOS JEAN',          sup:'Gleidson', fat:80881.3, dev:0,       pdev:0,          pos:55,  troca:2062.52,  ptroca:0.025501, dnLac:59,  cmLac:0,  dnBim:22,  cmBim:0,  dnFin:10, cmFin:0},
-  {nome:'MATHEUS RIBEIRO',      sup:'Gleidson', fat:87910.6, dev:87.26,   pdev:0.000993,   pos:49,  troca:1691.64,  ptroca:0.019243, dnLac:49,  cmLac:7,  dnBim:0,   cmBim:0,  dnFin:9,  cmFin:0},
-  {nome:'PAULA RIBEIRO',        sup:'Gleidson', fat:42810,   dev:0,       pdev:0,          pos:24,  troca:1465.90,  ptroca:0.034242, dnLac:34,  cmLac:0,  dnBim:0,   cmBim:0,  dnFin:5,  cmFin:0},
-  {nome:'PEDRO HENRIQUE',       sup:'Gleidson', fat:126317,  dev:702.25,  pdev:0.005559,   pos:58,  troca:1282.35,  ptroca:0.010152, dnLac:60,  cmLac:4,  dnBim:0,   cmBim:0,  dnFin:23, cmFin:0},
-
+  {nome:'EDVALDO',           sup:'Gleidson',fat:99864.9,  dev:160.32,  pdev:0.001605, pos:42,  troca:1845.73, ptroca:0.018482, dnLac:73,  cmLac:10, dnBim:0,   cmBim:0,  dnFin:26, cmFin:0, dnCat:12, cmCat:0, vol:5672.8},
+  {nome:'GABRIEL SODRE',     sup:'Gleidson',fat:72707.6,  dev:0,       pdev:0,        pos:49,  troca:1510.67, ptroca:0.020777, dnLac:67,  cmLac:10, dnBim:0,   cmBim:0,  dnFin:21, cmFin:0, dnCat:15, cmCat:0, vol:4211.52},
+  {nome:'HIAN RIBEIRO',      sup:'Gleidson',fat:216866,   dev:0,       pdev:0,        pos:118, troca:2972.38, ptroca:0.013706, dnLac:151, cmLac:12, dnBim:0,   cmBim:0,  dnFin:72, cmFin:0, dnCat:50, cmCat:0, vol:12470.1},
+  {nome:'MARCOS JEAN',       sup:'Gleidson',fat:99086.7,  dev:0,       pdev:0,        pos:56,  troca:2361.19, ptroca:0.023830, dnLac:61,  cmLac:0,  dnBim:24,  cmBim:0,  dnFin:10, cmFin:0, dnCat:15, cmCat:0, vol:4606.24},
+  {nome:'MATHEUS RIBEIRO',   sup:'Gleidson',fat:136147,   dev:87.26,   pdev:0.000641, pos:54,  troca:2676.46, ptroca:0.019659, dnLac:54,  cmLac:13, dnBim:0,   cmBim:0,  dnFin:9,  cmFin:0, dnCat:32, cmCat:0, vol:6957.56},
+  {nome:'PAULA RIBEIRO',     sup:'Gleidson',fat:60419.1,  dev:0,       pdev:0,        pos:39,  troca:1465.9,  ptroca:0.024262, dnLac:44,  cmLac:1,  dnBim:0,   cmBim:0,  dnFin:8,  cmFin:0, dnCat:11, cmCat:0, vol:3594.78},
+  {nome:'PEDRO HENRIQUE',    sup:'Gleidson',fat:143888,   dev:702.25,  pdev:0.004881, pos:65,  troca:1887.01, ptroca:0.013114, dnLac:71,  cmLac:7,  dnBim:0,   cmBim:0,  dnFin:25, cmFin:0, dnCat:22, cmCat:0, vol:7259.59},
   // ISRAEL
-  {nome:'FABIO SILVA',          sup:'Israel',  fat:70558.4,  dev:0,       pdev:0,          pos:22,  troca:7566.55,  ptroca:0.107238, dnLac:16,  cmLac:0,  dnBim:22,  cmBim:4,  dnFin:0,  cmFin:0},
-  {nome:'LINDIANE SOARES',      sup:'Israel',  fat:296267,   dev:1142.71, pdev:0.003857,   pos:22,  troca:21947.4,  ptroca:0.074080, dnLac:7,   cmLac:3,  dnBim:21,  cmBim:12, dnFin:0,  cmFin:0},
-
+  {nome:'FABIO SILVA',       sup:'Israel',  fat:87594.7,  dev:3075.1,  pdev:0.035106, pos:22,  troca:1758.91, ptroca:0.020080, dnLac:16,  cmLac:0,  dnBim:22,  cmBim:4,  dnFin:0,  cmFin:0, dnCat:0,  cmCat:0, vol:3283.54},
+  {nome:'LINDIANE SOARES',   sup:'Israel',  fat:396914,   dev:2757.24, pdev:0.006947, pos:22,  troca:0,       ptroca:0,        dnLac:8,   cmLac:4,  dnBim:21,  cmBim:12, dnFin:0,  cmFin:0, dnCat:8,  cmCat:0, vol:14104},
   // JEIZIANE
-  {nome:'ANDERSON NASCIMENTO',  sup:'Jeiziane',fat:78706.5,  dev:0,       pdev:0,          pos:32,  troca:765.39,   ptroca:0.009725, dnLac:35,  cmLac:2,  dnBim:22,  cmBim:1,  dnFin:2,  cmFin:0},
-  {nome:'ANDRE VINAGRE',        sup:'Jeiziane',fat:51298,    dev:0,       pdev:0,          pos:34,  troca:1233.33,  ptroca:0.024042, dnLac:40,  cmLac:0,  dnBim:42,  cmBim:4,  dnFin:1,  cmFin:0},
-  {nome:'BEATRIZ',              sup:'Jeiziane',fat:25759.5,  dev:288.54,  pdev:0.011201,   pos:14,  troca:229.90,   ptroca:0.008925, dnLac:10,  cmLac:2,  dnBim:19,  cmBim:1,  dnFin:3,  cmFin:0},
-  {nome:'DAGMAR SILVA',         sup:'Jeiziane',fat:48742.3,  dev:0,       pdev:0,          pos:28,  troca:727.38,   ptroca:0.014923, dnLac:32,  cmLac:7,  dnBim:32,  cmBim:0,  dnFin:5,  cmFin:0},
-  {nome:'ELICARLOS',            sup:'Jeiziane',fat:32776.4,  dev:610.11,  pdev:0.018614,   pos:31,  troca:689.67,   ptroca:0.021042, dnLac:32,  cmLac:0,  dnBim:47,  cmBim:0,  dnFin:3,  cmFin:0},
-  {nome:'JULIETE LIMA',         sup:'Jeiziane',fat:47263.7,  dev:0,       pdev:0,          pos:29,  troca:1684.25,  ptroca:0.035635, dnLac:26,  cmLac:4,  dnBim:38,  cmBim:4,  dnFin:3,  cmFin:0},
-  {nome:'SHEILLA MARIANO',      sup:'Jeiziane',fat:40354.1,  dev:2836.43, pdev:0.070289,   pos:37,  troca:1653.39,  ptroca:0.040972, dnLac:31,  cmLac:1,  dnBim:42,  cmBim:1,  dnFin:7,  cmFin:0},
-  {nome:'WESCKEY FONTES',       sup:'Jeiziane',fat:58611.8,  dev:791.16,  pdev:0.013498,   pos:54,  troca:429.70,   ptroca:0.007331, dnLac:53,  cmLac:7,  dnBim:41,  cmBim:1,  dnFin:37, cmFin:0},
-
+  {nome:'ANDERSON NASCIMENTO',sup:'Jeiziane',fat:98838,   dev:509.06,  pdev:0.005150, pos:35,  troca:765.39,  ptroca:0.007744, dnLac:38,  cmLac:2,  dnBim:27,  cmBim:1,  dnFin:3,  cmFin:0, dnCat:16, cmCat:0, vol:3952.29},
+  {nome:'ANDRE VINAGRE',     sup:'Jeiziane',fat:65185.6,  dev:0,       pdev:0,        pos:39,  troca:1296.52, ptroca:0.019890, dnLac:44,  cmLac:0,  dnBim:44,  cmBim:5,  dnFin:4,  cmFin:0, dnCat:4,  cmCat:0, vol:2479.82},
+  {nome:'BEATRIZ',           sup:'Jeiziane',fat:29778.1,  dev:659.36,  pdev:0.022142, pos:15,  troca:559.46,  ptroca:0.018788, dnLac:10,  cmLac:3,  dnBim:19,  cmBim:1,  dnFin:3,  cmFin:0, dnCat:2,  cmCat:0, vol:1186.34},
+  {nome:'DAGMAR SILVA',      sup:'Jeiziane',fat:60922.3,  dev:73.81,   pdev:0.001212, pos:37,  troca:1026.63, ptroca:0.016852, dnLac:40,  cmLac:8,  dnBim:41,  cmBim:0,  dnFin:5,  cmFin:0, dnCat:13, cmCat:0, vol:2765.41},
+  {nome:'ELICARLOS',         sup:'Jeiziane',fat:40151.4,  dev:1617.96, pdev:0.040296, pos:34,  troca:713.07,  ptroca:0.017760, dnLac:33,  cmLac:1,  dnBim:50,  cmBim:1,  dnFin:3,  cmFin:0, dnCat:12, cmCat:0, vol:1676.09},
+  {nome:'JULIETE LIMA',      sup:'Jeiziane',fat:59064.7,  dev:2414.34, pdev:0.040876, pos:35,  troca:1684.25, ptroca:0.028515, dnLac:30,  cmLac:5,  dnBim:42,  cmBim:5,  dnFin:4,  cmFin:0, dnCat:14, cmCat:0, vol:2179.39},
+  {nome:'SHEILLA MARIANO',   sup:'Jeiziane',fat:53056.2,  dev:3041.24, pdev:0.057321, pos:42,  troca:1668.98, ptroca:0.031457, dnLac:36,  cmLac:2,  dnBim:46,  cmBim:1,  dnFin:7,  cmFin:0, dnCat:11, cmCat:0, vol:2151.64},
+  {nome:'WESCKEY FONTES',    sup:'Jeiziane',fat:89154.6,  dev:791.16,  pdev:0.008874, pos:69,  troca:634.06,  ptroca:0.007112, dnLac:67,  cmLac:17, dnBim:50,  cmBim:2,  dnFin:46, cmFin:0, dnCat:7,  cmCat:0, vol:4280.59},
   // LUCAS
-  {nome:'AROLDO',               sup:'Lucas',   fat:149484,   dev:808.67,  pdev:0.005410,   pos:101, troca:1923.90,  ptroca:0.012870, dnLac:127, cmLac:15, dnBim:104, cmBim:0,  dnFin:21, cmFin:0},
-  {nome:'CARMILTON GOMES',      sup:'Lucas',   fat:112023,   dev:436.64,  pdev:0.003898,   pos:67,  troca:1375.39,  ptroca:0.012278, dnLac:78,  cmLac:5,  dnBim:73,  cmBim:4,  dnFin:26, cmFin:0},
-  {nome:'CLARA ARAUJO',         sup:'Lucas',   fat:124378,   dev:50.49,   pdev:0.000406,   pos:40,  troca:1944.21,  ptroca:0.015600, dnLac:47,  cmLac:8,  dnBim:37,  cmBim:1,  dnFin:13, cmFin:0},
-  {nome:'DIEGO SILVA',          sup:'Lucas',   fat:96021.2,  dev:122.31,  pdev:0.001274,   pos:54,  troca:2137.73,  ptroca:0.022263, dnLac:73,  cmLac:14, dnBim:72,  cmBim:2,  dnFin:29, cmFin:0},
-  {nome:'EDENILSON FERREIRA',   sup:'Lucas',   fat:80739.1,  dev:88.07,   pdev:0.001091,   pos:56,  troca:1700.79,  ptroca:0.021065, dnLac:0,   cmLac:0,  dnBim:86,  cmBim:31, dnFin:0,  cmFin:0},
-  {nome:'MAURÍCIO SILVA',       sup:'Lucas',   fat:100581,   dev:0,       pdev:0,          pos:63,  troca:1801.81,  ptroca:0.017914, dnLac:104, cmLac:42, dnBim:0,   cmBim:0,  dnFin:67, cmFin:0},
-
+  {nome:'AROLDO',            sup:'Lucas',   fat:195690,   dev:808.67,  pdev:0.004132, pos:112, troca:2738.85, ptroca:0.013996, dnLac:138, cmLac:15, dnBim:114, cmBim:2,  dnFin:22, cmFin:0, dnCat:13, cmCat:0, vol:10467.6},
+  {nome:'CARMILTON GOMES',   sup:'Lucas',   fat:150079,   dev:751.67,  pdev:0.005009, pos:77,  troca:2267.21, ptroca:0.015107, dnLac:81,  cmLac:17, dnBim:78,  cmBim:4,  dnFin:32, cmFin:0, dnCat:16, cmCat:0, vol:6664.43},
+  {nome:'CLARA ARAUJO',      sup:'Lucas',   fat:167358,   dev:50.49,   pdev:0.000302, pos:52,  troca:1813.27, ptroca:0.010835, dnLac:58,  cmLac:14, dnBim:45,  cmBim:2,  dnFin:15, cmFin:0, dnCat:9,  cmCat:0, vol:7842.4},
+  {nome:'DIEGO SILVA',       sup:'Lucas',   fat:141426,   dev:634.59,  pdev:0.004487, pos:75,  troca:2736.84, ptroca:0.019352, dnLac:90,  cmLac:17, dnBim:94,  cmBim:5,  dnFin:34, cmFin:0, dnCat:10, cmCat:0, vol:5684.99},
+  {nome:'EDENILSON FERREIRA',sup:'Lucas',   fat:121627,   dev:88.07,   pdev:0.000724, pos:75,  troca:2357.19, ptroca:0.019381, dnLac:0,   cmLac:0,  dnBim:96,  cmBim:44, dnFin:0,  cmFin:0, dnCat:0,  cmCat:0, vol:6300.67},
+  {nome:'MAURÍCIO SILVA',    sup:'Lucas',   fat:143653,   dev:0,       pdev:0,        pos:74,  troca:2238.17, ptroca:0.015580, dnLac:107, cmLac:45, dnBim:95,  cmBim:0,  dnFin:72, cmFin:0, dnCat:17, cmCat:0, vol:7513.3},
   // RODRIGO
-  {nome:'ALLYS ARAUJO',         sup:'Rodrigo', fat:79794.2,  dev:395.75,  pdev:0.004960,   pos:42,  troca:1761.28,  ptroca:0.022073, dnLac:42,  cmLac:16, dnBim:42,  cmBim:0,  dnFin:9,  cmFin:0},
-  {nome:'CAIO VINICIUS',        sup:'Rodrigo', fat:71275.2,  dev:0,       pdev:0,          pos:32,  troca:1647.84,  ptroca:0.023119, dnLac:27,  cmLac:14, dnBim:23,  cmBim:2,  dnFin:2,  cmFin:0},
-  {nome:'GILDASIO GAMA',        sup:'Rodrigo', fat:69171.1,  dev:0,       pdev:0,          pos:38,  troca:2334.70,  ptroca:0.033753, dnLac:36,  cmLac:17, dnBim:27,  cmBim:3,  dnFin:13, cmFin:0},
-  {nome:'HENRIQUE RAMON',       sup:'Rodrigo', fat:116459,   dev:411.08,  pdev:0.003530,   pos:71,  troca:1856.63,  ptroca:0.015942, dnLac:0,   cmLac:0,  dnBim:58,  cmBim:10, dnFin:0,  cmFin:0},
-  {nome:'JAILTON SANTOS',       sup:'Rodrigo', fat:60138.8,  dev:976.99,  pdev:0.016246,   pos:40,  troca:1963.23,  ptroca:0.032645, dnLac:34,  cmLac:16, dnBim:39,  cmBim:14, dnFin:21, cmFin:0},
-  {nome:'RAUNES NASCIMENTO',    sup:'Rodrigo', fat:136496,   dev:0,       pdev:0,          pos:83,  troca:2803.24,  ptroca:0.020537, dnLac:83,  cmLac:37, dnBim:0,   cmBim:0,  dnFin:53, cmFin:0},
-  {nome:'TADEU SANTOS',         sup:'Rodrigo', fat:83173.6,  dev:2230.93, pdev:0.026823,   pos:52,  troca:698.85,   ptroca:0.008402, dnLac:48,  cmLac:30, dnBim:49,  cmBim:2,  dnFin:22, cmFin:0},
+  {nome:'ALLYS ARAUJO',      sup:'Rodrigo', fat:111187,   dev:427.74,  pdev:0.003847, pos:58,  troca:2088.49, ptroca:0.018784, dnLac:51,  cmLac:26, dnBim:56,  cmBim:1,  dnFin:12, cmFin:0, dnCat:15, cmCat:0, vol:4557.64},
+  {nome:'CAIO VINICIUS',     sup:'Rodrigo', fat:100171,   dev:719.19,  pdev:0.007180, pos:37,  troca:1669.92, ptroca:0.016671, dnLac:32,  cmLac:15, dnBim:27,  cmBim:4,  dnFin:3,  cmFin:0, dnCat:10, cmCat:0, vol:4070.91},
+  {nome:'GILDASIO GAMA',     sup:'Rodrigo', fat:92480.5,  dev:0,       pdev:0,        pos:50,  troca:2334.7,  ptroca:0.025245, dnLac:48,  cmLac:21, dnBim:40,  cmBim:4,  dnFin:21, cmFin:0, dnCat:21, cmCat:0, vol:3583.75},
+  {nome:'HENRIQUE RAMON',    sup:'Rodrigo', fat:191545,   dev:411.08,  pdev:0.002146, pos:101, troca:2464.87, ptroca:0.012868, dnLac:0,   cmLac:0,  dnBim:76,  cmBim:16, dnFin:0,  cmFin:0, dnCat:64, cmCat:1, vol:9020.97},
+  {nome:'JAILTON SANTOS',    sup:'Rodrigo', fat:114162,   dev:976.99,  pdev:0.008558, pos:52,  troca:3033.22, ptroca:0.026570, dnLac:43,  cmLac:24, dnBim:46,  cmBim:23, dnFin:27, cmFin:0, dnCat:13, cmCat:0, vol:4683.41},
+  {nome:'RAUNES NASCIMENTO', sup:'Rodrigo', fat:193283,   dev:0,       pdev:0,        pos:108, troca:3307.55, ptroca:0.017113, dnLac:106, cmLac:47, dnBim:0,   cmBim:0,  dnFin:70, cmFin:0, dnCat:0,  cmCat:0, vol:7845.93},
+  {nome:'TADEU SANTOS',      sup:'Rodrigo', fat:113560,   dev:2230.93, pdev:0.019645, pos:63,  troca:698.85,  ptroca:0.006154, dnLac:53,  cmLac:33, dnBim:59,  cmBim:2,  dnFin:29, cmFin:0, dnCat:10, cmCat:0, vol:5898.56},
 ];
 
-// ── HELPERS ──────────────────────────────────────────────────────────────────
-// Exibe apenas 4 dígitos significativos + M ou K
 const fmt = v => {
-  if(v >= 1000000) {
-    const s = (v/1000000).toFixed(4);
-    const parts = s.replace('.',',').split(',');
-    const intPart = parts[0];
-    const decPart = parts[1] || '00';
-    const digits = (intPart + decPart).replace(/^0+/,'');
-    const needed = 4 - intPart.replace(/^0+/,'').length;
-    return 'R$ ' + intPart + ',' + decPart.substring(0, Math.max(needed,0)) + 'M';
+  if(v >= 1000000){
+    const n=(v/1000000); const s=n.toFixed(3);
+    return 'R$ '+s.replace('.',',')+'M';
   } else {
-    const s = (v/1000).toFixed(4);
-    const parts = s.replace('.',',').split(',');
-    const intPart = parts[0];
-    const decPart = parts[1] || '00';
-    const needed = 4 - intPart.replace(/^0+/,'').length;
-    return 'R$ ' + intPart + ',' + decPart.substring(0, Math.max(needed,0)) + 'K';
+    const n=(v/1000); const s=n.toFixed(1);
+    return 'R$ '+s.replace('.',',')+'K';
   }
 };
 const pct = v => (v*100).toFixed(1)+'%';
-const chipC = (ratio, inv=false) => {
-  if(inv) return ratio<=1?'chip-green':ratio<=1.5?'chip-yellow':'chip-red';
-  return ratio>=0.9?'chip-green':ratio>=0.6?'chip-yellow':'chip-red';
-};
+const fmtVol = v => Math.round(v).toLocaleString('pt-BR')+' kg';
+const sum = (arr,fn) => arr.reduce((a,b)=>a+fn(b),0);
+const initials = n => n.substring(0,2).toUpperCase();
+
 const colorC = (ratio, inv=false) => {
   if(inv) return ratio<=1?'#2e7d32':ratio<=1.5?'#e65100':'#c62828';
   return ratio>=0.9?'#2e7d32':ratio>=0.6?'#e65100':'#c62828';
+};
+const chipC = (ratio, inv=false) => {
+  if(inv) return ratio<=1?'chip-green':ratio<=1.5?'chip-yellow':'chip-red';
+  return ratio>=0.9?'chip-green':ratio>=0.6?'chip-yellow':'chip-red';
 };
 const fillC = (ratio, inv=false) => {
   if(inv) return ratio<=1?'fill-green':ratio<=1.5?'fill-yellow':'fill-red';
   return ratio>=0.9?'fill-green':ratio>=0.6?'fill-yellow':'fill-red';
 };
-const initials = n => n.substring(0,2).toUpperCase();
-const sum = (arr,fn) => arr.reduce((a,b)=>a+fn(b),0);
 
-// ── DATE ─────────────────────────────────────────────────────────────────────
-document.getElementById('currentDate').innerHTML = 'Abril de 2026';
-
-// ── GERAL: trocas/dev bars ────────────────────────────────────────────────────
+// Trocas & Dev bars
 const tDiv = document.getElementById('trocas-bars');
 const dDiv = document.getElementById('dev-bars');
 supervisores.forEach(s=>{
-  const tc = colorC(s.trocaReal/s.trocaMeta,true);
+  const tc=colorC(s.trocaReal/s.trocaMeta,true);
   tDiv.innerHTML+=`<div style="margin-bottom:8px;">
     <div style="display:flex;justify-content:space-between;font-size:11px;color:#5c8ab0;margin-bottom:3px;">
       <span>${s.nome}</span><span style="color:${tc};font-weight:700;">${pct(s.trocaReal)} <small style="color:#90a4ae;">/ meta ${pct(s.trocaMeta)}</small></span>
     </div>
-    <div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%;"></div></div>
+    <div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%"></div></div>
   </div>`;
-  const dc = colorC(s.devReal/s.devMeta,true);
+  const dc=colorC(s.devReal/s.devMeta,true);
   dDiv.innerHTML+=`<div style="margin-bottom:8px;">
     <div style="display:flex;justify-content:space-between;font-size:11px;color:#5c8ab0;margin-bottom:3px;">
       <span>${s.nome}</span><span style="color:${dc};font-weight:700;">${pct(s.devReal)} <small style="color:#90a4ae;">/ meta ${pct(s.devMeta)}</small></span>
     </div>
-    <div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%;"></div></div>
+    <div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%"></div></div>
   </div>`;
 });
 
-// ── GERAL: industry totals ────────────────────────────────────────────────────
-document.getElementById('g-dn-lac').textContent = sum(vendedores,v=>v.dnLac);
-document.getElementById('g-cm-lac').textContent = sum(vendedores,v=>v.cmLac);
-document.getElementById('g-dn-bim').textContent = sum(vendedores,v=>v.dnBim);
-document.getElementById('g-cm-bim').textContent = sum(vendedores,v=>v.cmBim);
-document.getElementById('g-dn-fin').textContent = sum(vendedores,v=>v.dnFin);
-document.getElementById('g-cm-fin').textContent = sum(vendedores,v=>v.cmFin);
+// Industry totals
+document.getElementById('g-dn-lac').textContent=sum(vendedores,v=>v.dnLac);
+document.getElementById('g-cm-lac').textContent=sum(vendedores,v=>v.cmLac);
+document.getElementById('g-dn-bim').textContent=sum(vendedores,v=>v.dnBim);
+document.getElementById('g-cm-bim').textContent=sum(vendedores,v=>v.cmBim);
+document.getElementById('g-dn-fin').textContent=sum(vendedores,v=>v.dnFin);
+document.getElementById('g-cm-fin').textContent=sum(vendedores,v=>v.cmFin);
+document.getElementById('g-dn-cat').textContent=sum(vendedores,v=>v.dnCat);
+document.getElementById('g-cm-cat').textContent=sum(vendedores,v=>v.cmCat);
 
-// ── RANKING ───────────────────────────────────────────────────────────────────
-const sorted = [...supervisores].sort((a,b)=>(b.fatReal/b.fatMeta)-(a.fatReal/a.fatMeta));
-const tbody = document.getElementById('rankingBody');
+// Ranking
+const sorted=[...supervisores].sort((a,b)=>(b.fatReal/b.fatMeta)-(a.fatReal/a.fatMeta));
+const tbody=document.getElementById('rankingBody');
 sorted.forEach((s,i)=>{
   const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
   const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`${i+1}º`;
+  const supVends=vendedores.filter(v=>v.sup===s.nome);
+  const volT=sum(supVends,v=>v.vol);
   tbody.innerHTML+=`<tr>
     <td style="font-size:16px;font-weight:700;">${medal}</td>
     <td><span class="sup-name">${s.nome}</span></td>
     <td>${fmt(s.fatReal)}</td>
     <td><span class="chip ${chipC(fp)}">${pct(fp)}</span></td>
+    <td>${fmtVol(volT)}</td>
     <td>${s.posReal}</td>
     <td><span class="chip ${chipC(pp)}">${pct(pp)}</span></td>
     <td><span class="chip ${chipC(s.trocaReal/s.trocaMeta,true)}">${pct(s.trocaReal)}</span></td>
@@ -404,49 +373,75 @@ sorted.forEach((s,i)=>{
     <td><span class="chip ${chipC(cp)}">${pct(cp)}</span></td>
   </tr>`;
 });
+const totalVol=sum(vendedores,v=>v.vol);
 tbody.innerHTML+=`<tr class="total-row">
   <td colspan="2">GERAL</td>
-  <td>R$ 4,76M</td><td><span class="chip chip-yellow">52,0%</span></td>
-  <td>1.859</td><td><span class="chip chip-red">42,8%</span></td>
+  <td>R$ 6,55M</td><td><span class="chip chip-yellow">71,7%</span></td>
+  <td>${fmtVol(totalVol)}</td>
+  <td>2.813</td><td><span class="chip chip-yellow">68,4%</span></td>
   <td>—</td><td>—</td>
-  <td>2.509</td><td><span class="chip chip-yellow">67,4%</span></td>
-  <td>307</td><td><span class="chip chip-red">27,4%</span></td>
+  <td>2.909</td><td><span class="chip chip-yellow">78,1%</span></td>
+  <td>435</td><td><span class="chip chip-red">38,9%</span></td>
 </tr>`;
 
-// ── INDIVIDUAL SUPERVISOR VIEWS ───────────────────────────────────────────────
-const supContainer = document.getElementById('sup-views');
+// Individual supervisor views
+const supContainer=document.getElementById('sup-views');
 supervisores.forEach(s=>{
-  const vends = vendedores.filter(v=>v.sup===s.nome).sort((a,b)=>b.fat-a.fat);
+  const vends=vendedores.filter(v=>v.sup===s.nome).sort((a,b)=>b.fat-a.fat);
   const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
-
   const dnLacT=sum(vends,v=>v.dnLac), cmLacT=sum(vends,v=>v.cmLac);
   const dnBimT=sum(vends,v=>v.dnBim), cmBimT=sum(vends,v=>v.cmBim);
   const dnFinT=sum(vends,v=>v.dnFin), cmFinT=sum(vends,v=>v.cmFin);
+  const dnCatT=sum(vends,v=>v.dnCat), cmCatT=sum(vends,v=>v.cmCat);
+  // (dnLacTv etc. computed inside vendRows block below)
+
+  const volT=sum(vends,v=>v.vol);
+  const fatT=sum(vends,v=>v.fat);
+  const posT=sum(vends,v=>v.pos);
+  const trocaT=sum(vends,v=>v.troca);
+  const devT=sum(vends,v=>v.dev);
+  const dnLacTv=sum(vends,v=>v.dnLac), cmLacTv=sum(vends,v=>v.cmLac);
+  const dnBimTv=sum(vends,v=>v.dnBim), cmBimTv=sum(vends,v=>v.cmBim);
+  const dnFinTv=sum(vends,v=>v.dnFin), cmFinTv=sum(vends,v=>v.cmFin);
+  const dnCatTv=sum(vends,v=>v.dnCat), cmCatTv=sum(vends,v=>v.cmCat);
+  const ptrocaT=fatT>0?trocaT/fatT:0;
+  const pdevT=fatT>0?devT/fatT:0;
 
   let vendRows='';
   vends.forEach((v,idx)=>{
     const tColor=colorC(v.ptroca/s.trocaMeta,true);
     const dColor=colorC(v.pdev/s.devMeta,true);
     vendRows+=`<tr>
-      <td style="font-weight:700;color:#5c8ab0;font-size:11px;">${idx+1}º</td>
+      <td style="font-weight:700;color:#5c8ab0;">${idx+1}º</td>
       <td><span class="vendor-name">${v.nome}</span></td>
       <td>${fmt(v.fat)}</td>
+      <td>${Math.round(v.vol).toLocaleString('pt-BR')} kg</td>
       <td>${v.pos}</td>
       <td style="color:${tColor};font-weight:700;">${pct(v.ptroca)}</td>
       <td style="color:${dColor};font-weight:700;">${pct(v.pdev)}</td>
       <td><span class="chip chip-blue">${v.dnLac}</span></td>
       <td><span class="chip chip-blue">${v.cmLac}</span></td>
-      <td>${v.dnBim}</td>
-      <td>${v.cmBim}</td>
-      <td>${v.dnFin}</td>
-      <td>${v.cmFin}</td>
+      <td>${v.dnBim}</td><td>${v.cmBim}</td>
+      <td>${v.dnFin}</td><td>${v.cmFin}</td>
+      <td>${v.dnCat}</td><td>${v.cmCat}</td>
     </tr>`;
   });
+  vendRows+=`<tr class="total-row">
+    <td colspan="2">TOTAL (${vends.length} vendedores)</td>
+    <td>${fmt(fatT)}</td>
+    <td>${Math.round(volT).toLocaleString('pt-BR')} kg</td>
+    <td>${posT}</td>
+    <td><span class="chip ${chipC(ptrocaT/s.trocaMeta,true)}">${pct(ptrocaT)}</span></td>
+    <td><span class="chip ${chipC(pdevT/s.devMeta,true)}">${pct(pdevT)}</span></td>
+    <td>${dnLacTv}</td><td>${cmLacTv}</td>
+    <td>${dnBimTv}</td><td>${cmBimTv}</td>
+    <td>${dnFinTv}</td><td>${cmFinTv}</td>
+    <td>${dnCatTv}</td><td>${cmCatTv}</td>
+  </tr>`;
 
   supContainer.innerHTML+=`
   <div class="view" id="view-sup-${s.nome}">
     <div class="section-title">Performance Individual</div>
-
     <div class="ind-sup-header">
       <div class="avatar">${initials(s.nome)}</div>
       <div>
@@ -458,53 +453,46 @@ supervisores.forEach(s=>{
         <div class="small">do faturamento</div>
       </div>
     </div>
-
     <div class="ind-kpi-grid">
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">💰 Faturamento</div>
         <div class="ind-kpi-val" style="color:${colorC(fp)};">${fmt(s.fatReal)}</div>
         <div class="ind-kpi-sub">Meta: ${fmt(s.fatMeta)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(fp)}" style="width:${Math.min(fp*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(fp)}" style="width:${Math.min(fp*100,100)}%"></div></div></div>
       </div>
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">✅ Positivação ≥ R$400</div>
         <div class="ind-kpi-val" style="color:${colorC(pp)};">${s.posReal}</div>
         <div class="ind-kpi-sub">Meta: ${Math.round(s.posMeta)} clientes · ${pct(pp)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(pp)}" style="width:${Math.min(pp*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(pp)}" style="width:${Math.min(pp*100,100)}%"></div></div></div>
       </div>
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">🔁 Trocas</div>
         <div class="ind-kpi-val" style="color:${colorC(s.trocaReal/s.trocaMeta,true)};">${pct(s.trocaReal)}</div>
         <div class="ind-kpi-sub">Meta: ${pct(s.trocaMeta)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%"></div></div></div>
       </div>
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">↩️ Devoluções</div>
         <div class="ind-kpi-val" style="color:${colorC(s.devReal/s.devMeta,true)};">${pct(s.devReal)}</div>
         <div class="ind-kpi-sub">Meta: ${pct(s.devMeta)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%"></div></div></div>
       </div>
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">🔄 DN Lactalis</div>
         <div class="ind-kpi-val" style="color:${colorC(dp)};">${s.dnReal}</div>
         <div class="ind-kpi-sub">Meta: ${s.dnMeta} PDVs · ${pct(dp)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(dp)}" style="width:${Math.min(dp*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(dp)}" style="width:${Math.min(dp*100,100)}%"></div></div></div>
       </div>
       <div class="ind-kpi-card">
         <div class="ind-kpi-label">📦 CM Lactalis</div>
         <div class="ind-kpi-val" style="color:${colorC(cp)};">${s.cmReal}</div>
         <div class="ind-kpi-sub">Meta: ${s.cmMeta} PDVs · ${pct(cp)}</div>
-        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(cp)}" style="width:${Math.min(cp*100,100)}%;"></div></div></div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(cp)}" style="width:${Math.min(cp*100,100)}%"></div></div></div>
       </div>
     </div>
-
     <div class="section-title" style="margin-top:20px;">🏭 Execução por Indústria</div>
     <div class="industry-grid">
-      <div class="industry-card">
-        <div class="industry-name industry-lactalis">🥛 Lactalis</div>
-        <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val">${dnLacT}</span></div>
-        <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val">${cmLacT}</span></div>
-      </div>
       <div class="industry-card">
         <div class="industry-name industry-bimbo">🍞 Bimbo</div>
         <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val">${dnBimT}</span></div>
@@ -515,19 +503,24 @@ supervisores.forEach(s=>{
         <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val">${dnFinT}</span></div>
         <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val">${cmFinT}</span></div>
       </div>
+      <div class="industry-card">
+        <div class="industry-name industry-catupiry">🧀 Catupiry</div>
+        <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val">${dnCatT}</span></div>
+        <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val">${cmCatT}</span></div>
+      </div>
     </div>
-
     <div class="vendor-section">
       <div class="vendor-section-title">👥 Todos os Vendedores — ${s.nome} (${vends.length})</div>
       <div class="vendor-table-wrap">
         <table>
           <thead><tr>
             <th>#</th><th>Vendedor</th>
-            <th>Faturamento</th><th>Positivação</th>
+            <th>Faturamento</th><th>Volume (kg)</th><th>Positivação</th>
             <th>% Troca</th><th>% Devol.</th>
             <th>DN Lac.</th><th>CM Lac.</th>
             <th>DN Bimbo</th><th>CM Bimbo</th>
             <th>DN Fini</th><th>CM Fini</th>
+            <th>DN Cat.</th><th>CM Cat.</th>
           </tr></thead>
           <tbody>${vendRows}</tbody>
         </table>
@@ -536,29 +529,13 @@ supervisores.forEach(s=>{
   </div>`;
 });
 
-// ── NAV ───────────────────────────────────────────────────────────────────────
 function showView(id,el){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   const t=document.getElementById('view-'+id)||document.getElementById('view-sup-'+id);
-  if(t)t.classList.add('active');
+  if(t) t.classList.add('active');
   el.classList.add('active');
 }
 </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>JBS Frios – Dashboard Comercial</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Inter',sans-serif;background:#f0f6ff;color:#1e3a5f;min-height:100vh;}
-
-/* HEADER */
-.header{background:linear-gradient(135deg,#1565c0 0%,#0d47a1 60%,#0a2e6e 100%);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(13,71,161,0.4);}
-.header-left{display:flex;align-items:center;gap:16px;}
-.logo-img{height:56px;background:white;border-radius:10px;padding:4
