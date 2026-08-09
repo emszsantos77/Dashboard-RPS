@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JBS Frios – Dashboard Comercial</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#f0f6ff;color:#1e3a5f;min-height:100vh;}
+.header{background:linear-gradient(135deg,#1565c0 0%,#0d47a1 60%,#0a2e6e 100%);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(13,71,161,0.4);}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo-img{height:56px;background:white;border-radius:10px;padding:4px 10px;object-fit:contain;}
+.header-title{font-size:20px;font-weight:800;color:white;}
+.header-sub{font-size:12px;color:rgba(255,255,255,0.75);margin-top:2px;}
+.header-date{font-size:12px;color:rgba(255,255,255,0.8);text-align:right;}
+.nav{background:#1565c0;padding:0 32px;display:flex;gap:2px;overflow-x:auto;border-bottom:2px solid #0d47a1;}
+.tab{padding:13px 18px;cursor:pointer;font-size:12px;font-weight:600;color:rgba(255,255,255,0.65);border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;}
+.tab:hover{color:white;}
+.tab.active{color:white;border-bottom-color:#64b5f6;}
+.main{padding:24px 32px;max-width:1500px;margin:0 auto;}
+.section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5c8ab0;margin-bottom:12px;margin-top:24px;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.kpi-card{background:white;border-radius:14px;padding:18px;border:1px solid #dbeafe;box-shadow:0 2px 8px rgba(21,101,192,0.08);position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kpi-card.blue::before{background:#1565c0;}
+.kpi-card.sky::before{background:#29b6f6;}
+.kpi-card.green::before{background:#43a047;}
+.kpi-card.orange::before{background:#fb8c00;}
+.kpi-card.red::before{background:#e53935;}
+.kpi-label{font-size:10px;font-weight:700;color:#5c8ab0;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.kpi-value{font-size:24px;font-weight:800;color:#1e3a5f;}
+.kpi-sub{font-size:11px;color:#90a4ae;margin-top:3px;}
+.kpi-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;margin-top:7px;}
+.badge-green{background:rgba(67,160,71,.12);color:#2e7d32;}
+.badge-yellow{background:rgba(251,140,0,.12);color:#e65100;}
+.badge-red{background:rgba(229,57,53,.12);color:#c62828;}
+.progress-wrap{margin-top:8px;}
+.progress-bar{height:5px;background:#e3f2fd;border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:99px;transition:width .8s ease;}
+.fill-green{background:linear-gradient(90deg,#388e3c,#66bb6a);}
+.fill-yellow{background:linear-gradient(90deg,#f57c00,#ffa726);}
+.fill-red{background:linear-gradient(90deg,#c62828,#ef5350);}
+.fill-blue{background:linear-gradient(90deg,#1565c0,#42a5f5);}
+.table-wrap{background:white;border-radius:14px;border:1px solid #dbeafe;overflow-x:auto;margin-top:8px;box-shadow:0 2px 8px rgba(21,101,192,0.06);scrollbar-width:thin;scrollbar-color:#90c4f8 #e3f2fd;}
+.table-wrap::-webkit-scrollbar{height:7px;}
+.table-wrap::-webkit-scrollbar-track{background:#e3f2fd;border-radius:99px;}
+.table-wrap::-webkit-scrollbar-thumb{background:#90c4f8;border-radius:99px;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead tr{background:#e3f2fd;}
+th{padding:10px 14px;text-align:center;font-size:10px;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+td{padding:11px 14px;border-top:1px solid #e3f2fd;vertical-align:middle;text-align:center;}
+tr:hover td{background:#f5f9ff;}
+tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;}
+.sup-name{font-weight:700;color:#1e3a5f;}
+.chip{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;}
+.chip-green{background:rgba(67,160,71,.12);color:#2e7d32;}
+.chip-yellow{background:rgba(251,140,0,.12);color:#e65100;}
+.chip-red{background:rgba(229,57,53,.12);color:#c62828;}
+.chip-blue{background:rgba(21,101,192,.1);color:#1565c0;}
+.vendor-section{margin-top:20px;}
+.vendor-section-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1565c0;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #e3f2fd;}
+.vendor-table-wrap{background:white;border-radius:12px;border:1px solid #dbeafe;overflow-x:auto;box-shadow:0 2px 8px rgba(21,101,192,0.06);}
+.vendor-table-wrap table{font-size:13px;}
+.vendor-table-wrap thead tr{background:#e8f4fd;}
+.vendor-table-wrap th{font-size:11px;padding:11px 14px;color:#1565c0;text-align:center;font-weight:700;}
+.vendor-table-wrap td{padding:11px 14px;border-top:1px solid #f0f7ff;text-align:center;color:#1e3a5f;font-weight:500;}
+.vendor-table-wrap tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;color:#1e3a5f;}
+.vendor-name{font-weight:700;color:#1e3a5f;white-space:nowrap;}
+.industry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px;}
+.industry-card{background:white;border-radius:12px;padding:16px;border:1px solid #dbeafe;box-shadow:0 2px 6px rgba(21,101,192,0.06);}
+.industry-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #e3f2fd;}
+.industry-lactalis{color:#1565c0;border-bottom-color:#1565c0;}
+
+.ind-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.ind-row-label{font-size:11px;color:#5c8ab0;}
+.ind-row-val{font-size:14px;font-weight:800;color:#1e3a5f;}
+.ind-sup-header{background:white;border-radius:14px;padding:20px;border:1px solid #dbeafe;box-shadow:0 2px 8px rgba(21,101,192,0.08);display:flex;align-items:center;gap:16px;margin-bottom:4px;}
+.avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1565c0,#42a5f5);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:white;flex-shrink:0;}
+.ind-name{font-size:18px;font-weight:800;color:#1e3a5f;}
+.ind-meta{font-size:12px;color:#90a4ae;}
+.ind-fat-pct{margin-left:auto;text-align:right;}
+.ind-fat-pct .big{font-size:30px;font-weight:800;}
+.ind-fat-pct .small{font-size:11px;color:#90a4ae;}
+.ind-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px;}
+.ind-kpi-card{background:white;border-radius:12px;padding:14px;border:1px solid #dbeafe;box-shadow:0 1px 4px rgba(21,101,192,0.06);}
+.ind-kpi-label{font-size:10px;font-weight:700;color:#5c8ab0;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.ind-kpi-val{font-size:20px;font-weight:800;color:#1e3a5f;}
+.ind-kpi-sub{font-size:10px;color:#90a4ae;margin-top:2px;}
+.view{display:none;}
+.view.active{display:block;}
+.footer{text-align:center;padding:18px;font-size:10px;color:#90a4ae;margin-top:16px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <img class="logo-img" src="logo jbs.jpg" alt="JBS Frios" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='flex'"/>
+    <div id="logo-fallback" style="display:none;background:white;border-radius:10px;padding:6px 14px;font-weight:800;font-size:18px;color:#1565c0;">JBS FRIOS</div>
+    <div>
+      <div class="header-title">Dashboard Comercial — JBS Frios</div>
+      <div class="header-sub">Acompanhamento Mensal de Performance | Supervisores & Vendedores</div>
+    </div>
+  </div>
+  <div class="header-date">Agosto de 2026</div>
+</div>
+
+<div class="nav">
+  <div class="tab active" onclick="showView('geral',this)">📊 Visão Geral</div>
+  <div class="tab" onclick="showView('ranking',this)">🏆 Ranking</div>
+  <div class="tab" onclick="showView('sup-Andreia',this)">Andreia</div>
+  <div class="tab" onclick="showView('sup-Danillo',this)">Danillo</div>
+  <div class="tab" onclick="showView('sup-Gleidson',this)">Gleidson</div>
+  <div class="tab" onclick="showView('sup-Israel',this)">Israel</div>
+  <div class="tab" onclick="showView('sup-Jeiziane',this)">Jeiziane</div>
+  <div class="tab" onclick="showView('sup-Lucas',this)">Lucas</div>
+  <div class="tab" onclick="showView('sup-Rodrigo',this)">Rodrigo</div>
+</div>
+
+<div class="main">
+
+<div class="view active" id="view-geral">
+  <div class="section-title">Consolidado Geral da Equipe — Mês Atual</div>
+  <div class="kpi-grid">
+    <div class="kpi-card blue">
+      <div class="kpi-label">💰 Faturamento</div>
+      <div class="kpi-value" id="top-fat-real"></div>
+      <div class="kpi-sub" id="top-fat-meta"></div>
+      <span class="kpi-badge" id="top-fat-badge"></span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="top-fat-bar"></div></div></div>
+    </div>
+    <div class="kpi-card sky">
+      <div class="kpi-label">✅ Positivação ≥ R$400</div>
+      <div class="kpi-value" id="top-pos-real"></div>
+      <div class="kpi-sub" id="top-pos-meta"></div>
+      <span class="kpi-badge" id="top-pos-badge"></span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="top-pos-bar"></div></div></div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">🔄 DN Lactalis</div>
+      <div class="kpi-value" id="top-dn-real"></div>
+      <div class="kpi-sub" id="top-dn-meta"></div>
+      <span class="kpi-badge" id="top-dn-badge"></span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="top-dn-bar"></div></div></div>
+    </div>
+    <div class="kpi-card sky">
+      <div class="kpi-label">📦 CM Lactalis</div>
+      <div class="kpi-value" id="top-cm-real"></div>
+      <div class="kpi-sub" id="top-cm-meta"></div>
+      <span class="kpi-badge" id="top-cm-badge"></span>
+      <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="top-cm-bar"></div></div></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px;">⚠️ Trocas & Devoluções por Supervisor</div>
+  <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+    <div class="kpi-card red">
+      <div class="kpi-label">🔁 Trocas — % sobre Faturamento</div>
+      <div style="margin-top:10px;" id="trocas-bars"></div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">↩️ Devoluções — % sobre Faturamento</div>
+      <div style="margin-top:10px;" id="dev-bars"></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px;">🏭 Execução por Indústria — Consolidado</div>
+  <div class="industry-grid">
+    <div class="industry-card">
+      <div class="industry-name industry-lactalis">🥛 Lactalis</div>
+      <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val" id="g-dn-lac"></span></div>
+      <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val" id="g-cm-lac"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="view" id="view-ranking">
+  <div class="section-title">Ranking de Supervisores</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Supervisor</th>
+        <th>Faturamento</th><th>% Fat.</th>
+        <th>Volume (kg)</th>
+        <th>Positivação</th><th>% Pos.</th>
+        <th>Trocas %</th><th>Devol. %</th>
+        <th>DN Lac.</th><th>% DN Lac.</th>
+        <th>CM Lac.</th><th>% CM Lac.</th>
+      </tr></thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="sup-views"></div>
+
+</div>
+<div class="footer">JBS Frios · Dashboard Comercial · Distribuidor Autorizado</div>
+
+<script>
+const supervisores = [
+  {
+    "nome": "Andreia",
+    "fatMeta": 2277000.0,
+    "fatReal": 417172.18,
+    "posMeta": 640.0,
+    "posReal": 280.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.022156223360819526,
+    "devMeta": 0.01,
+    "devReal": 0.00006134157843411326,
+    "dnMeta": 620.0,
+    "dnReal": 337.0,
+    "cmMeta": 180.0,
+    "cmReal": 24.0
+  },
+  {
+    "nome": "Danillo",
+    "fatMeta": 1628000.0,
+    "fatReal": 353472.35,
+    "posMeta": 868.7,
+    "posReal": 280.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.024392006899549575,
+    "devMeta": 0.01,
+    "devReal": 0.005237015002729352,
+    "dnMeta": 700.0,
+    "dnReal": 303.0,
+    "cmMeta": 200.0,
+    "cmReal": 8.0
+  },
+  {
+    "nome": "Gleidson",
+    "fatMeta": 2044000.0,
+    "fatReal": 340879.92,
+    "posMeta": 1108.1,
+    "posReal": 234.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.024718205754096643,
+    "devMeta": 0.01,
+    "devReal": 0.016888615791742733,
+    "dnMeta": 933.0,
+    "dnReal": 223.0,
+    "cmMeta": 280.0,
+    "cmReal": 14.0
+  },
+  {
+    "nome": "Israel",
+    "fatMeta": 720000.0,
+    "fatReal": 146391.27,
+    "posMeta": 54.6,
+    "posReal": 23.0,
+    "trocaMeta": 0.025,
+    "trocaReal": 0.10505776744747143,
+    "devMeta": 0.01,
+    "devReal": 0.0016464096527067495,
+    "dnMeta": 24.0,
+    "dnReal": 8.0,
+    "cmMeta": 8.0,
+    "cmReal": 0.0
+  },
+  {
+    "nome": "Jeiziane",
+    "fatMeta": 792000.0,
+    "fatReal": 176489.73,
+    "posMeta": 600.0,
+    "posReal": 114.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.030959591813076056,
+    "devMeta": 0.01,
+    "devReal": 0.01353948470542734,
+    "dnMeta": 430.0,
+    "dnReal": 139.0,
+    "cmMeta": 130.0,
+    "cmReal": 20.0
+  },
+  {
+    "nome": "Lucas",
+    "fatMeta": 1538000.0,
+    "fatReal": 301108.98,
+    "posMeta": 657.0,
+    "posReal": 214.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.027636870876451464,
+    "devMeta": 0.01,
+    "devReal": 0.00044933897355037386,
+    "dnMeta": 700.0,
+    "dnReal": 278.0,
+    "cmMeta": 200.0,
+    "cmReal": 63.0
+  },
+  {
+    "nome": "Rodrigo",
+    "fatMeta": 1130000.0,
+    "fatReal": 286920.33,
+    "posMeta": 538.0,
+    "posReal": 149.0,
+    "trocaMeta": 0.015,
+    "trocaReal": 0.0316905393214904,
+    "devMeta": 0.01,
+    "devReal": 0.004637942525717854,
+    "dnMeta": 500.0,
+    "dnReal": 135.0,
+    "cmMeta": 150.0,
+    "cmReal": 39.0
+  }
+];
+
+const vendedores = [
+  {
+    "nome": "AGNALDO SILVA (75 99889-0341)",
+    "sup": "Andreia",
+    "fat": 43834.32,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 38.0,
+    "troca": 943.32,
+    "ptroca": 0.02152,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3686.91,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "ANDRÉ RODRIGUES",
+    "sup": "Andreia",
+    "fat": 43049.34,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 35.0,
+    "troca": 1485.63,
+    "ptroca": 0.03451,
+    "dnLac": 72.0,
+    "cmLac": 8.0,
+    "vol": 2494.53,
+    "clientesInstaveis": 4.0
+  },
+  {
+    "nome": "BRUNO OLIVEIRA",
+    "sup": "Andreia",
+    "fat": 67084.54,
+    "dev": 25.59,
+    "pdev": 0.000381,
+    "pos": 53.0,
+    "troca": 729.57,
+    "ptroca": 0.010875,
+    "dnLac": 99.0,
+    "cmLac": 3.0,
+    "vol": 3506.8,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "EVANILSON NOVAIS (107)",
+    "sup": "Andreia",
+    "fat": 45592.02,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 37.0,
+    "troca": 1277.93,
+    "ptroca": 0.02803,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 2211.65,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "EVERALDO ALVES",
+    "sup": "Andreia",
+    "fat": 50306.67,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 33.0,
+    "troca": 1585.95,
+    "ptroca": 0.031526,
+    "dnLac": 71.0,
+    "cmLac": 5.0,
+    "vol": 2627.59,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "GABRIEL PEREIRA",
+    "sup": "Andreia",
+    "fat": 51010.94,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 41.0,
+    "troca": 62.17,
+    "ptroca": 0.001219,
+    "dnLac": 52.0,
+    "cmLac": 1.0,
+    "vol": 2607.16,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "JOELSON MIRANDA",
+    "sup": "Andreia",
+    "fat": 54035.01,
+    "dev": 151.38,
+    "pdev": 0.002802,
+    "pos": 42.0,
+    "troca": 921.68,
+    "ptroca": 0.017057,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 7531.55,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "LARISSA MENDES",
+    "sup": "Andreia",
+    "fat": 33321.19,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 18.0,
+    "troca": 1003.5,
+    "ptroca": 0.030116,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 2922.03,
+    "clientesInstaveis": 4.0
+  },
+  {
+    "nome": "MARIA ELIZABETE",
+    "sup": "Andreia",
+    "fat": 39418.72,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 632.55,
+    "ptroca": 0.016047,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3356.29,
+    "clientesInstaveis": 7.0
+  },
+  {
+    "nome": "ROMILSON ALVES",
+    "sup": "Andreia",
+    "fat": 43554.44,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 20.0,
+    "troca": 1522.34,
+    "ptroca": 0.034953,
+    "dnLac": 43.0,
+    "cmLac": 7.0,
+    "vol": 3936.95,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "CAMILA FERREIRA",
+    "sup": "Danillo",
+    "fat": 77271.74,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 2341.67,
+    "ptroca": 0.030304,
+    "dnLac": 36.0,
+    "cmLac": 2.0,
+    "vol": 3717.3,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "JAMILE",
+    "sup": "Danillo",
+    "fat": 20610.74,
+    "dev": 1851.14,
+    "pdev": 0.089814,
+    "pos": 16.0,
+    "troca": 646.43,
+    "ptroca": 0.031364,
+    "dnLac": 28.0,
+    "cmLac": 0.0,
+    "vol": 801.44,
+    "clientesInstaveis": 15.0
+  },
+  {
+    "nome": "HELLEN GOMES",
+    "sup": "Danillo",
+    "fat": 48316.63,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 1378.11,
+    "ptroca": 0.028522,
+    "dnLac": 56.0,
+    "cmLac": 0.0,
+    "vol": 2530.82,
+    "clientesInstaveis": 30.0
+  },
+  {
+    "nome": "EDVALDO",
+    "sup": "Danillo",
+    "fat": 33177.34,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 22.0,
+    "troca": 1056.98,
+    "ptroca": 0.031859,
+    "dnLac": 38.0,
+    "cmLac": 1.0,
+    "vol": 1845.52,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "HIAN RIBEIRO",
+    "sup": "Danillo",
+    "fat": 88062.91,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 46.0,
+    "troca": 1196.26,
+    "ptroca": 0.013584,
+    "dnLac": 69.0,
+    "cmLac": 3.0,
+    "vol": 8511.09,
+    "clientesInstaveis": 13.0
+  },
+  {
+    "nome": "MARCOS JEAN",
+    "sup": "Danillo",
+    "fat": 45199.19,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 31.0,
+    "troca": 1109.11,
+    "ptroca": 0.024538,
+    "dnLac": 40.0,
+    "cmLac": 0.0,
+    "vol": 2043.43,
+    "clientesInstaveis": 17.0
+  },
+  {
+    "nome": "PEDRO HENRIQUE",
+    "sup": "Danillo",
+    "fat": 40833.8,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 29.0,
+    "troca": 893.34,
+    "ptroca": 0.021877,
+    "dnLac": 36.0,
+    "cmLac": 2.0,
+    "vol": 5229.7,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "GABRIEL SODRE (120)",
+    "sup": "Gleidson",
+    "fat": 20959.08,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 16.0,
+    "troca": 648.1,
+    "ptroca": 0.030922,
+    "dnLac": 23.0,
+    "cmLac": 0.0,
+    "vol": 1100.95,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "CESAR DIAS",
+    "sup": "Gleidson",
+    "fat": 33170.19,
+    "dev": 80.0,
+    "pdev": 0.002412,
+    "pos": 21.0,
+    "troca": 805.86,
+    "ptroca": 0.024295,
+    "dnLac": 27.0,
+    "cmLac": 0.0,
+    "vol": 2420.73,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "CLAUBELINO SANTOS (125)",
+    "sup": "Gleidson",
+    "fat": 30302.26,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 787.53,
+    "ptroca": 0.025989,
+    "dnLac": 24.0,
+    "cmLac": 3.0,
+    "vol": 1867.75,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "EDSON CORREIA (77 99165-5655)",
+    "sup": "Gleidson",
+    "fat": 31393.31,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 1113.68,
+    "ptroca": 0.035475,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 1395.74,
+    "clientesInstaveis": 15.0
+  },
+  {
+    "nome": "ILMA MOURA",
+    "sup": "Gleidson",
+    "fat": 20857.06,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 13.0,
+    "troca": 435.53,
+    "ptroca": 0.020882,
+    "dnLac": 23.0,
+    "cmLac": 0.0,
+    "vol": 4337.89,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "JEFERSON SILVA (130)",
+    "sup": "Gleidson",
+    "fat": 19484.09,
+    "dev": 4404.92,
+    "pdev": 0.226078,
+    "pos": 13.0,
+    "troca": 1173.0,
+    "ptroca": 0.060205,
+    "dnLac": 5.0,
+    "cmLac": 0.0,
+    "vol": 801.37,
+    "clientesInstaveis": 17.0
+  },
+  {
+    "nome": "JONES FERNANDES",
+    "sup": "Gleidson",
+    "fat": 53046.88,
+    "dev": 804.8,
+    "pdev": 0.015171,
+    "pos": 29.0,
+    "troca": 834.61,
+    "ptroca": 0.015733,
+    "dnLac": 31.0,
+    "cmLac": 3.0,
+    "vol": 4478.13,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "JORGE REIS (117)",
+    "sup": "Gleidson",
+    "fat": 27725.77,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 622.61,
+    "ptroca": 0.022456,
+    "dnLac": 23.0,
+    "cmLac": 1.0,
+    "vol": 1215.11,
+    "clientesInstaveis": 14.0
+  },
+  {
+    "nome": "UELESSON OLIVEIRA (129)",
+    "sup": "Gleidson",
+    "fat": 15852.17,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 403.45,
+    "ptroca": 0.025451,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 771.69,
+    "clientesInstaveis": 23.0
+  },
+  {
+    "nome": "MATHEUS RIBEIRO",
+    "sup": "Gleidson",
+    "fat": 27506.77,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 15.0,
+    "troca": 481.56,
+    "ptroca": 0.017507,
+    "dnLac": 21.0,
+    "cmLac": 3.0,
+    "vol": 4124.63,
+    "clientesInstaveis": 8.0
+  },
+  {
+    "nome": "PAULA RIBEIRO (101)",
+    "sup": "Gleidson",
+    "fat": 9961.79,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 8.0,
+    "troca": 236.4,
+    "ptroca": 0.023731,
+    "dnLac": 10.0,
+    "cmLac": 0.0,
+    "vol": 644.57,
+    "clientesInstaveis": 25.0
+  },
+  {
+    "nome": "ROTA MACAUBAS",
+    "sup": "Gleidson",
+    "fat": 50820.57,
+    "dev": 467.27,
+    "pdev": 0.009195,
+    "pos": 51.0,
+    "troca": 908.81,
+    "ptroca": 0.017883,
+    "dnLac": 36.0,
+    "cmLac": 4.0,
+    "vol": 2996.87,
+    "clientesInstaveis": 0.0
+  },
+  {
+    "nome": "FABIO SILVA",
+    "sup": "Israel",
+    "fat": 35878.69,
+    "dev": 241.02,
+    "pdev": 0.006718,
+    "pos": 8.0,
+    "troca": 478.88,
+    "ptroca": 0.013347,
+    "dnLac": 8.0,
+    "cmLac": 0.0,
+    "vol": 1618.39,
+    "clientesInstaveis": 3.0
+  },
+  {
+    "nome": "LINDIANE SOARES",
+    "sup": "Israel",
+    "fat": 110512.58,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 0.0,
+    "ptroca": 0.0,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3371.27,
+    "clientesInstaveis": 3.0
+  },
+  {
+    "nome": "ANDRE VINAGRE (123)",
+    "sup": "Jeiziane",
+    "fat": 36005.61,
+    "dev": 2389.58,
+    "pdev": 0.066367,
+    "pos": 24.0,
+    "troca": 1056.45,
+    "ptroca": 0.029341,
+    "dnLac": 19.0,
+    "cmLac": 0.0,
+    "vol": 1391.82,
+    "clientesInstaveis": 19.0
+  },
+  {
+    "nome": "DAGMAR SILVA (75 98201-9217)",
+    "sup": "Jeiziane",
+    "fat": 28258.85,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 22.0,
+    "troca": 528.05,
+    "ptroca": 0.018686,
+    "dnLac": 21.0,
+    "cmLac": 2.0,
+    "vol": 1261.27,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "JULIETE LIMA (122)",
+    "sup": "Jeiziane",
+    "fat": 25829.83,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 894.27,
+    "ptroca": 0.034622,
+    "dnLac": 18.0,
+    "cmLac": 2.0,
+    "vol": 1544.15,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "SHEILLA MARIANO",
+    "sup": "Jeiziane",
+    "fat": 28258.9,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 877.88,
+    "ptroca": 0.031066,
+    "dnLac": 22.0,
+    "cmLac": 2.0,
+    "vol": 1307.39,
+    "clientesInstaveis": 8.0
+  },
+  {
+    "nome": "WESCKEY FONTES",
+    "sup": "Jeiziane",
+    "fat": 33177.01,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 281.33,
+    "ptroca": 0.008479,
+    "dnLac": 39.0,
+    "cmLac": 14.0,
+    "vol": 1419.06,
+    "clientesInstaveis": 27.0
+  },
+  {
+    "nome": "MARGARIDA",
+    "sup": "Jeiziane",
+    "fat": 24959.53,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 1826.07,
+    "ptroca": 0.073161,
+    "dnLac": 20.0,
+    "cmLac": 0.0,
+    "vol": 1466.92,
+    "clientesInstaveis": 0.0
+  },
+  {
+    "nome": "AROLDO",
+    "sup": "Lucas",
+    "fat": 70997.8,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 40.0,
+    "troca": 1217.18,
+    "ptroca": 0.017144,
+    "dnLac": 55.0,
+    "cmLac": 15.0,
+    "vol": 3724.89,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "ANDERSON NASCIMENTO",
+    "sup": "Lucas",
+    "fat": 28711.19,
+    "dev": 135.3,
+    "pdev": 0.004712,
+    "pos": 17.0,
+    "troca": 780.08,
+    "ptroca": 0.02717,
+    "dnLac": 20.0,
+    "cmLac": 0.0,
+    "vol": 1789.37,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "CARMILTON GOMES (118)",
+    "sup": "Lucas",
+    "fat": 49202.99,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 32.0,
+    "troca": 1155.09,
+    "ptroca": 0.023476,
+    "dnLac": 43.0,
+    "cmLac": 9.0,
+    "vol": 1991.68,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "CLARA ARAUJO",
+    "sup": "Lucas",
+    "fat": 37182.85,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 20.0,
+    "troca": 609.36,
+    "ptroca": 0.016388,
+    "dnLac": 25.0,
+    "cmLac": 4.0,
+    "vol": 3335.54,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "DIEGO SILVA",
+    "sup": "Lucas",
+    "fat": 34621.56,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 737.52,
+    "ptroca": 0.021302,
+    "dnLac": 37.0,
+    "cmLac": 10.0,
+    "vol": 1358.88,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "EDENILSON FERREIRA",
+    "sup": "Lucas",
+    "fat": 33934.39,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 24.0,
+    "troca": 1301.97,
+    "ptroca": 0.038367,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 4349.56,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "MAURÍCIO SILVA",
+    "sup": "Lucas",
+    "fat": 46458.2,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 54.0,
+    "troca": 2520.52,
+    "ptroca": 0.054254,
+    "dnLac": 98.0,
+    "cmLac": 25.0,
+    "vol": 5018.6,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "ALLYS ARAUJO",
+    "sup": "Rodrigo",
+    "fat": 37042.88,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 26.0,
+    "troca": 624.07,
+    "ptroca": 0.016847,
+    "dnLac": 25.0,
+    "cmLac": 8.0,
+    "vol": 2382.52,
+    "clientesInstaveis": 23.0
+  },
+  {
+    "nome": "CAIO VINICIUS",
+    "sup": "Rodrigo",
+    "fat": 25055.22,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 16.0,
+    "troca": 973.91,
+    "ptroca": 0.038871,
+    "dnLac": 18.0,
+    "cmLac": 4.0,
+    "vol": 1146.22,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "GILDASIO GAMA (128)",
+    "sup": "Rodrigo",
+    "fat": 39396.95,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 1417.89,
+    "ptroca": 0.03599,
+    "dnLac": 20.0,
+    "cmLac": 4.0,
+    "vol": 1475.24,
+    "clientesInstaveis": 19.0
+  },
+  {
+    "nome": "HENRIQUE RAMON",
+    "sup": "Rodrigo",
+    "fat": 59976.24,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 34.0,
+    "troca": 1332.93,
+    "ptroca": 0.022224,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3439.14,
+    "clientesInstaveis": 22.0
+  },
+  {
+    "nome": "JAILTON SANTOS (140)",
+    "sup": "Rodrigo",
+    "fat": 30869.54,
+    "dev": 1330.72,
+    "pdev": 0.043108,
+    "pos": 21.0,
+    "troca": 1481.56,
+    "ptroca": 0.047994,
+    "dnLac": 20.0,
+    "cmLac": 6.0,
+    "vol": 1395.74,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "RAUNES NASCIMENTO",
+    "sup": "Rodrigo",
+    "fat": 57404.75,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 36.0,
+    "troca": 2223.18,
+    "ptroca": 0.038728,
+    "dnLac": 36.0,
+    "cmLac": 12.0,
+    "vol": 2351.04,
+    "clientesInstaveis": 21.0
+  },
+  {
+    "nome": "TADEU SANTOS",
+    "sup": "Rodrigo",
+    "fat": 38174.75,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 1039.12,
+    "ptroca": 0.02722,
+    "dnLac": 16.0,
+    "cmLac": 5.0,
+    "vol": 4310.57,
+    "clientesInstaveis": 25.0
+  }
+];
+
+const fmt = v => {
+  const n = Number(v || 0);
+  if (Math.abs(n) >= 1000000) return 'R$ ' + (n / 1000000).toFixed(3).replace('.', ',') + 'M';
+  if (Math.abs(n) >= 1000) return 'R$ ' + (n / 1000).toFixed(1).replace('.', ',') + 'K';
+  return 'R$ ' + n.toFixed(2).replace('.', ',');
+};
+const pct = v => (v*100).toFixed(1)+'%';
+const fmtVol = v => Math.round(v).toLocaleString('pt-BR')+' kg';
+const sum = (arr,fn) => arr.reduce((a,b)=>a+fn(b),0);
+const initials = n => n.substring(0,2).toUpperCase();
+
+const colorC = (ratio, inv=false) => {
+  if(inv) return ratio<=1?'#2e7d32':ratio<=1.5?'#e65100':'#c62828';
+  return ratio>=0.9?'#2e7d32':ratio>=0.6?'#e65100':'#c62828';
+};
+const chipC = (ratio, inv=false) => {
+  if(inv) return ratio<=1?'chip-green':ratio<=1.5?'chip-yellow':'chip-red';
+  return ratio>=0.9?'chip-green':ratio>=0.6?'chip-yellow':'chip-red';
+};
+const fillC = (ratio, inv=false) => {
+  if(inv) return ratio<=1?'fill-green':ratio<=1.5?'fill-yellow':'fill-red';
+  return ratio>=0.9?'fill-green':ratio>=0.6?'fill-yellow':'fill-red';
+};
+
+const geralData = {
+  "nome": "GERAL",
+  "fatMeta": 10129000.0,
+  "fatReal": 2022434.76,
+  "posMeta": 4466.4,
+  "posReal": 1294.0,
+  "trocaMeta": 0.0175,
+  "trocaReal": 0.03191636203879329,
+  "devMeta": 0.01,
+  "devReal": 0.005800107984694647,
+  "dnMeta": 3907.0,
+  "dnReal": 1423.0,
+  "cmMeta": 1148.4,
+  "cmReal": 168.0
+};
+const setTopCard = (prefix, real, meta, labelMeta, isMoney=false) => {
+  const ratio = meta > 0 ? real / meta : 0;
+  const badgeClass = chipC(ratio).replace('chip','badge');
+  const fillClass = fillC(ratio);
+  document.getElementById(`top-${prefix}-real`).textContent = isMoney ? fmt(real) : Math.round(real).toLocaleString('pt-BR');
+  document.getElementById(`top-${prefix}-meta`).textContent = labelMeta;
+  const badge = document.getElementById(`top-${prefix}-badge`);
+  badge.className = `kpi-badge ${badgeClass}`;
+  badge.textContent = pct(ratio) + ' atingido';
+  const bar = document.getElementById(`top-${prefix}-bar`);
+  bar.className = `progress-fill ${fillClass}`;
+  bar.style.width = Math.min(ratio * 100, 100) + '%';
+};
+setTopCard('fat', geralData.fatReal, geralData.fatMeta, 'Meta: ' + fmt(geralData.fatMeta), true);
+setTopCard('pos', geralData.posReal, geralData.posMeta, 'Meta: ' + Math.round(geralData.posMeta).toLocaleString('pt-BR') + ' PDVs');
+setTopCard('dn', geralData.dnReal, geralData.dnMeta, 'Meta: ' + Math.round(geralData.dnMeta).toLocaleString('pt-BR') + ' PDVs');
+setTopCard('cm', geralData.cmReal, geralData.cmMeta, 'Meta: ' + Math.round(geralData.cmMeta).toLocaleString('pt-BR') + ' PDVs');
+
+// Trocas & Dev bars
+const tDiv = document.getElementById('trocas-bars');
+const dDiv = document.getElementById('dev-bars');
+supervisores.forEach(s=>{
+  const tc=colorC(s.trocaReal/s.trocaMeta,true);
+  tDiv.innerHTML+=`<div style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:#5c8ab0;margin-bottom:3px;">
+      <span>${s.nome}</span><span style="color:${tc};font-weight:700;">${pct(s.trocaReal)} <small style="color:#90a4ae;">/ meta ${pct(s.trocaMeta)}</small></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%"></div></div>
+  </div>`;
+  const dc=colorC(s.devReal/s.devMeta,true);
+  dDiv.innerHTML+=`<div style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:#5c8ab0;margin-bottom:3px;">
+      <span>${s.nome}</span><span style="color:${dc};font-weight:700;">${pct(s.devReal)} <small style="color:#90a4ae;">/ meta ${pct(s.devMeta)}</small></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%"></div></div>
+  </div>`;
+});
+
+// Industry totals
+document.getElementById('g-dn-lac').textContent=sum(vendedores,v=>v.dnLac);
+document.getElementById('g-cm-lac').textContent=sum(vendedores,v=>v.cmLac);
+
+// Ranking
+const sorted=[...supervisores].sort((a,b)=>(b.fatReal/b.fatMeta)-(a.fatReal/a.fatMeta));
+const tbody=document.getElementById('rankingBody');
+sorted.forEach((s,i)=>{
+  const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
+  const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`${i+1}º`;
+  const supVends=vendedores.filter(v=>v.sup===s.nome);
+  const volT=sum(supVends,v=>v.vol);
+  tbody.innerHTML+=`<tr>
+    <td style="font-size:16px;font-weight:700;">${medal}</td>
+    <td><span class="sup-name">${s.nome}</span></td>
+    <td>${fmt(s.fatReal)}</td>
+    <td><span class="chip ${chipC(fp)}">${pct(fp)}</span></td>
+    <td>${fmtVol(volT)}</td>
+    <td>${s.posReal}</td>
+    <td><span class="chip ${chipC(pp)}">${pct(pp)}</span></td>
+    <td><span class="chip ${chipC(s.trocaReal/s.trocaMeta,true)}">${pct(s.trocaReal)}</span></td>
+    <td><span class="chip ${chipC(s.devReal/s.devMeta,true)}">${pct(s.devReal)}</span></td>
+    <td>${s.dnReal}</td>
+    <td><span class="chip ${chipC(dp)}">${pct(dp)}</span></td>
+    <td>${s.cmReal}</td>
+    <td><span class="chip ${chipC(cp)}">${pct(cp)}</span></td>
+  </tr>`;
+});
+const totalVol=sum(vendedores,v=>v.vol);
+tbody.innerHTML+=`<tr class="total-row">
+  <td colspan="2">GERAL</td>
+  <td>${fmt(geralData.fatReal)}</td><td><span class="chip ${chipC(geralData.fatReal/geralData.fatMeta)}">${pct(geralData.fatReal/geralData.fatMeta)}</span></td>
+  <td>${fmtVol(totalVol)}</td>
+  <td>${geralData.posReal}</td><td><span class="chip ${chipC(geralData.posReal/geralData.posMeta)}">${pct(geralData.posReal/geralData.posMeta)}</span></td>
+  <td>—</td><td>—</td>
+  <td>${geralData.dnReal}</td><td><span class="chip ${chipC(geralData.dnReal/geralData.dnMeta)}">${pct(geralData.dnReal/geralData.dnMeta)}</span></td>
+  <td>${geralData.cmReal}</td><td><span class="chip ${chipC(geralData.cmReal/geralData.cmMeta)}">${pct(geralData.cmReal/geralData.cmMeta)}</span></td>
+</tr>`;
+
+// Individual supervisor views
+const supContainer=document.getElementById('sup-views');
+supervisores.forEach(s=>{
+  const vends=vendedores.filter(v=>v.sup===s.nome).sort((a,b)=>b.fat-a.fat);
+  const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
+  const dnLacT=sum(vends,v=>v.dnLac), cmLacT=sum(vends,v=>v.cmLac);
+
+  const volT=sum(vends,v=>v.vol);
+  const fatT=sum(vends,v=>v.fat);
+  const posT=sum(vends,v=>v.pos);
+  const trocaT=sum(vends,v=>v.troca);
+  const devT=sum(vends,v=>v.dev);
+  const dnLacTv=sum(vends,v=>v.dnLac), cmLacTv=sum(vends,v=>v.cmLac);
+  const ptrocaT=fatT>0?trocaT/fatT:0;
+  const pdevT=fatT>0?devT/fatT:0;
+
+  let vendRows='';
+  vends.forEach((v,idx)=>{
+    const tColor=colorC(v.ptroca/s.trocaMeta,true);
+    const dColor=colorC(v.pdev/s.devMeta,true);
+    vendRows+=`<tr>
+      <td style="font-weight:700;color:#5c8ab0;">${idx+1}º</td>
+      <td><span class="vendor-name">${v.nome}</span></td>
+      <td>${fmt(v.fat)}</td>
+      <td>${Math.round(v.vol).toLocaleString('pt-BR')} kg</td>
+      <td>${v.pos}</td>
+      <td>${Math.round(v.clientesInstaveis || 0)}</td>
+      <td style="color:${tColor};font-weight:700;">${pct(v.ptroca)}</td>
+      <td style="color:${dColor};font-weight:700;">${pct(v.pdev)}</td>
+      <td><span class="chip chip-blue">${v.dnLac}</span></td>
+      <td><span class="chip chip-blue">${v.cmLac}</span></td>
+    </tr>`;
+  });
+  vendRows+=`<tr class="total-row">
+    <td colspan="2">TOTAL (${vends.length} vendedores)</td>
+    <td>${fmt(fatT)}</td>
+    <td>${Math.round(volT).toLocaleString('pt-BR')} kg</td>
+    <td>${posT}</td>
+    <td>${Math.round(sum(vends,v=>v.clientesInstaveis || 0))}</td>
+    <td><span class="chip ${chipC(ptrocaT/s.trocaMeta,true)}">${pct(ptrocaT)}</span></td>
+    <td><span class="chip ${chipC(pdevT/s.devMeta,true)}">${pct(pdevT)}</span></td>
+    <td>${dnLacTv}</td><td>${cmLacTv}</td>
+  </tr>`;
+
+  supContainer.innerHTML+=`
+  <div class="view" id="view-sup-${s.nome}">
+    <div class="section-title">Performance Individual</div>
+    <div class="ind-sup-header">
+      <div class="avatar">${initials(s.nome)}</div>
+      <div>
+        <div class="ind-name">${s.nome}</div>
+        <div class="ind-meta">Supervisor Comercial · JBS Frios · ${vends.length} vendedores</div>
+      </div>
+      <div class="ind-fat-pct">
+        <div class="big" style="color:${colorC(fp)};">${pct(fp)}</div>
+        <div class="small">do faturamento</div>
+      </div>
+    </div>
+    <div class="ind-kpi-grid">
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">💰 Faturamento</div>
+        <div class="ind-kpi-val" style="color:${colorC(fp)};">${fmt(s.fatReal)}</div>
+        <div class="ind-kpi-sub">Meta: ${fmt(s.fatMeta)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(fp)}" style="width:${Math.min(fp*100,100)}%"></div></div></div>
+      </div>
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">✅ Positivação ≥ R$400</div>
+        <div class="ind-kpi-val" style="color:${colorC(pp)};">${s.posReal}</div>
+        <div class="ind-kpi-sub">Meta: ${Math.round(s.posMeta)} clientes · ${pct(pp)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(pp)}" style="width:${Math.min(pp*100,100)}%"></div></div></div>
+      </div>
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">🔁 Trocas</div>
+        <div class="ind-kpi-val" style="color:${colorC(s.trocaReal/s.trocaMeta,true)};">${pct(s.trocaReal)}</div>
+        <div class="ind-kpi-sub">Meta: ${pct(s.trocaMeta)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.trocaReal/s.trocaMeta,true)}" style="width:${Math.min(s.trocaReal/s.trocaMeta*100,100)}%"></div></div></div>
+      </div>
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">↩️ Devoluções</div>
+        <div class="ind-kpi-val" style="color:${colorC(s.devReal/s.devMeta,true)};">${pct(s.devReal)}</div>
+        <div class="ind-kpi-sub">Meta: ${pct(s.devMeta)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(s.devReal/s.devMeta,true)}" style="width:${Math.min(s.devReal/s.devMeta*100,100)}%"></div></div></div>
+      </div>
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">🔄 DN Lactalis</div>
+        <div class="ind-kpi-val" style="color:${colorC(dp)};">${s.dnReal}</div>
+        <div class="ind-kpi-sub">Meta: ${s.dnMeta} PDVs · ${pct(dp)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(dp)}" style="width:${Math.min(dp*100,100)}%"></div></div></div>
+      </div>
+      <div class="ind-kpi-card">
+        <div class="ind-kpi-label">📦 CM Lactalis</div>
+        <div class="ind-kpi-val" style="color:${colorC(cp)};">${s.cmReal}</div>
+        <div class="ind-kpi-sub">Meta: ${s.cmMeta} PDVs · ${pct(cp)}</div>
+        <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill ${fillC(cp)}" style="width:${Math.min(cp*100,100)}%"></div></div></div>
+      </div>
+    </div>
+    <div class="section-title" style="margin-top:20px;">🏭 Execução por Indústria</div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="industry-name industry-lactalis">🥛 Lactalis</div>
+        <div class="ind-row"><span class="ind-row-label">DN Total</span><span class="ind-row-val">${dnLacT}</span></div>
+        <div class="ind-row"><span class="ind-row-label">CM Total</span><span class="ind-row-val">${cmLacT}</span></div>
+      </div>
+    </div>
+    <div class="vendor-section">
+      <div class="vendor-section-title">👥 Todos os Vendedores — ${s.nome} (${vends.length})</div>
+      <div class="vendor-table-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>Vendedor</th>
+            <th>Faturamento</th><th>Volume (kg)</th><th>Positivação</th><th>Clientes Instáveis</th>
+            <th>% Troca</th><th>% Devol.</th>
+            <th>DN Lac.</th><th>CM Lac.</th>
+          </tr></thead>
+          <tbody>${vendRows}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>`;
+});
+
+function showView(id,el){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  const t=document.getElementById('view-'+id)||document.getElementById('view-sup-'+id);
+  if(t) t.classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
