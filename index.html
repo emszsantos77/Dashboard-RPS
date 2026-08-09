@@ -72,8 +72,6 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
 .industry-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #e3f2fd;}
 .industry-lactalis{color:#1565c0;border-bottom-color:#1565c0;}
 
-
-
 .ind-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .ind-row-label{font-size:11px;color:#5c8ab0;}
 .ind-row-val{font-size:14px;font-weight:800;color:#1e3a5f;}
@@ -105,7 +103,7 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
       <div class="header-sub">Acompanhamento Mensal de Performance | Supervisores & Vendedores</div>
     </div>
   </div>
-  <div class="header-date">Julho de 2026</div>
+  <div class="header-date">Agosto de 2026</div>
 </div>
 
 <div class="nav">
@@ -201,209 +199,838 @@ tr.total-row td{background:#e3f2fd;font-weight:700;border-top:2px solid #1565c0;
 <div class="footer">JBS Frios · Dashboard Comercial · Distribuidor Autorizado</div>
 
 <script>
-/* --- DADOS ATUALIZADOS A PARTIR DAS PLANILHAS --- */
 const supervisores = [
   {
     "nome": "Andreia",
-    "fatMeta": 2277000,
-    "fatReal": 2179540.700005,
-    "posMeta": 630,
-    "posReal": 663,
+    "fatMeta": 2277000.0,
+    "fatReal": 417172.18,
+    "posMeta": 640.0,
+    "posReal": 280.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.012003478531050108,
+    "trocaReal": 0.022156223360819526,
     "devMeta": 0.01,
-    "devReal": 0.005594664967715434,
-    "dnMeta": 600,
-    "dnReal": 656,
-    "cmMeta": 180,
-    "cmReal": 120
+    "devReal": 0.00006134157843411326,
+    "dnMeta": 620.0,
+    "dnReal": 337.0,
+    "cmMeta": 180.0,
+    "cmReal": 24.0
   },
   {
     "nome": "Danillo",
-    "fatMeta": 1628000,
-    "fatReal": 1445366.5299996,
-    "posMeta": 840,
-    "posReal": 663,
+    "fatMeta": 1628000.0,
+    "fatReal": 353472.35,
+    "posMeta": 868.7,
+    "posReal": 280.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.013788938367072883,
+    "trocaReal": 0.024392006899549575,
     "devMeta": 0.01,
-    "devReal": 0.010803654073821677,
-    "dnMeta": 660,
-    "dnReal": 696,
-    "cmMeta": 200,
-    "cmReal": 58
+    "devReal": 0.005237015002729352,
+    "dnMeta": 700.0,
+    "dnReal": 303.0,
+    "cmMeta": 200.0,
+    "cmReal": 8.0
   },
   {
     "nome": "Gleidson",
-    "fatMeta": 2044000,
-    "fatReal": 1754548.6499994,
-    "posMeta": 1066.8,
-    "posReal": 717,
+    "fatMeta": 2044000.0,
+    "fatReal": 340879.92,
+    "posMeta": 1108.1,
+    "posReal": 234.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.020278217990706608,
+    "trocaReal": 0.024718205754096643,
     "devMeta": 0.01,
-    "devReal": 0.009777847995266478,
-    "dnMeta": 960,
-    "dnReal": 651,
-    "cmMeta": 288,
-    "cmReal": 119
+    "devReal": 0.016888615791742733,
+    "dnMeta": 933.0,
+    "dnReal": 223.0,
+    "cmMeta": 280.0,
+    "cmReal": 14.0
   },
   {
     "nome": "Israel",
-    "fatMeta": 720000,
-    "fatReal": 690194.0800004,
-    "posMeta": 53.199996,
-    "posReal": 51,
+    "fatMeta": 720000.0,
+    "fatReal": 146391.27,
+    "posMeta": 54.6,
+    "posReal": 23.0,
     "trocaMeta": 0.025,
-    "trocaReal": 0.09251941135165917,
+    "trocaReal": 0.10505776744747143,
     "devMeta": 0.01,
-    "devReal": 0.007703079690280734,
-    "dnMeta": 24,
-    "dnReal": 30,
-    "cmMeta": 8,
-    "cmReal": 5
+    "devReal": 0.0016464096527067495,
+    "dnMeta": 24.0,
+    "dnReal": 8.0,
+    "cmMeta": 8.0,
+    "cmReal": 0.0
   },
   {
     "nome": "Jeiziane",
-    "fatMeta": 792000,
-    "fatReal": 630396.4100005,
-    "posMeta": 600,
-    "posReal": 304,
+    "fatMeta": 792000.0,
+    "fatReal": 176489.73,
+    "posMeta": 600.0,
+    "posReal": 114.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.018640540798764992,
+    "trocaReal": 0.030959591813076056,
     "devMeta": 0.01,
-    "devReal": 0.018494553292268893,
-    "dnMeta": 430,
-    "dnReal": 322,
-    "cmMeta": 130,
-    "cmReal": 61
+    "devReal": 0.01353948470542734,
+    "dnMeta": 430.0,
+    "dnReal": 139.0,
+    "cmMeta": 130.0,
+    "cmReal": 20.0
   },
   {
     "nome": "Lucas",
-    "fatMeta": 1538000,
-    "fatReal": 1463042.5100005,
-    "posMeta": 657,
-    "posReal": 549,
+    "fatMeta": 1538000.0,
+    "fatReal": 301108.98,
+    "posMeta": 657.0,
+    "posReal": 214.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.01292306263882925,
+    "trocaReal": 0.027636870876451464,
     "devMeta": 0.01,
-    "devReal": 0.005093515703791818,
-    "dnMeta": 700,
-    "dnReal": 591,
-    "cmMeta": 200,
-    "cmReal": 168
+    "devReal": 0.00044933897355037386,
+    "dnMeta": 700.0,
+    "dnReal": 278.0,
+    "cmMeta": 200.0,
+    "cmReal": 63.0
   },
   {
     "nome": "Rodrigo",
-    "fatMeta": 1130000,
-    "fatReal": 1294384.37,
-    "posMeta": 538,
-    "posReal": 459,
+    "fatMeta": 1130000.0,
+    "fatReal": 286920.33,
+    "posMeta": 538.0,
+    "posReal": 149.0,
     "trocaMeta": 0.015,
-    "trocaReal": 0.01481895211698206,
+    "trocaReal": 0.0316905393214904,
     "devMeta": 0.01,
-    "devReal": 0.0024727817132093456,
-    "dnMeta": 500,
-    "dnReal": 404,
-    "cmMeta": 150,
-    "cmReal": 166
-  },
-  {
-    "nome": "GERAL",
-    "fatMeta": 10129000,
-    "fatReal": 9457473.2500004,
-    "posMeta": 4385,
-    "posReal": 3406,
-    "trocaMeta": 0.0175,
-    "trocaReal": 0.020657415023616357,
-    "devMeta": 0.01,
-    "devReal": 0.007675731993214992,
-    "dnMeta": 3874,
-    "dnReal": 3350,
-    "cmMeta": 1156.4,
-    "cmReal": 697
+    "devReal": 0.004637942525717854,
+    "dnMeta": 500.0,
+    "dnReal": 135.0,
+    "cmMeta": 150.0,
+    "cmReal": 39.0
   }
 ];
 
 const vendedores = [
-  /* vendedores atualizados a partir da planilha "ACOMPANHAMENTO VENDEDORES (30).xlsx" */
-  {"nome":"AGNALDO SILVA (75 99889-0341)","sup":"Andreia","fat":177732,"dev":4083.47,"pdev":0.0229755,"pos":91,"troca":2473.75,"ptroca":0.0139185,"dnLac":0,"cmLac":0,"vol":11187.5,"clientesInstaveis":9},
-  {"nome":"ANDRÉ RODRIGUES","sup":"Andreia","fat":188645,"dev":1778.22,"pdev":0.00942626,"pos":105,"troca":2723.02,"ptroca":0.0144346,"dnLac":140,"cmLac":24,"vol":9959.4,"clientesInstaveis":4},
-  {"nome":"BRUNO OLIVEIRA","sup":"Andreia","fat":271359,"dev":782.37,"pdev":0.00288315,"pos":122,"troca":3107.94,"ptroca":0.0114532,"dnLac":154,"cmLac":21,"vol":13294.7,"clientesInstaveis":16},
-  {"nome":"EVANILSON NOVAIS (107)","sup":"Andreia","fat":267759,"dev":1982.96,"pdev":0.00740578,"pos":133,"troca":3693.15,"ptroca":0.0137928,"dnLac":0,"cmLac":0,"vol":15151.6,"clientesInstaveis":5},
-  {"nome":"EVERALDO ALVES","sup":"Andreia","fat":255548,"dev":713.09,"pdev":0.00279043,"pos":126,"troca":3209.22,"ptroca":0.0125582,"dnLac":160,"cmLac":37,"vol":13096,"clientesInstaveis":5},
-  {"nome":"GABRIEL PEREIRA","sup":"Andreia","fat":270938,"dev":0,"pdev":0,"pos":106,"troca":1623.37,"ptroca":0.00599167,"dnLac":109,"cmLac":15,"vol":13256.3,"clientesInstaveis":5},
-  {"nome":"JOELSON MIRANDA","sup":"Andreia","fat":257555,"dev":365.89,"pdev":0.00142063,"pos":105,"troca":3176.29,"ptroca":0.0123325,"dnLac":0,"cmLac":0,"vol":22599.1,"clientesInstaveis":12},
-  {"nome":"LARISSA MENDES","sup":"Andreia","fat":142325,"dev":208.2,"pdev":0.00146285,"pos":57,"troca":1335.48,"ptroca":0.0093833,"dnLac":0,"cmLac":0,"vol":17152.3,"clientesInstaveis":4},
-  {"nome":"MARIA ELIZABETE","sup":"Andreia","fat":190250,"dev":2279.6,"pdev":0.0119821,"pos":115,"troca":2637.7,"ptroca":0.0138644,"dnLac":0,"cmLac":0,"vol":26917.6,"clientesInstaveis":7},
-  {"nome":"ROMILSON ALVES","sup":"Andreia","fat":157430,"dev":0,"pdev":0,"pos":60,"troca":2182.15,"ptroca":0.0138611,"dnLac":93,"cmLac":23,"vol":8348.52,"clientesInstaveis":5},
-  {"nome":"CAMILA FERREIRA","sup":"Danillo","fat":402077,"dev":1610.4,"pdev":0.00400521,"pos":67,"troca":6677.93,"ptroca":0.0166086,"dnLac":78,"cmLac":22,"vol":18102.2,"clientesInstaveis":5},
-  {"nome":"JAMILE","sup":"Danillo","fat":72407,"dev":5980.78,"pdev":0.0825995,"pos":43,"troca":1021.33,"ptroca":0.0141054,"dnLac":60,"cmLac":6,"vol":3502.05,"clientesInstaveis":13},
-  {"nome":"HELLEN GOMES","sup":"Danillo","fat":229567,"dev":181.32,"pdev":0.000789836,"pos":125,"troca":2875.82,"ptroca":0.0125272,"dnLac":148,"cmLac":2,"vol":12155.6,"clientesInstaveis":19},
-  {"nome":"EDVALDO","sup":"Danillo","fat":151936,"dev":261.13,"pdev":0.00171869,"pos":61,"troca":1915.27,"ptroca":0.0126058,"dnLac":84,"cmLac":10,"vol":8065.69,"clientesInstaveis":14},
-  {"nome":"HIAN RIBEIRO","sup":"Danillo","fat":297871,"dev":2729.64,"pdev":0.00916383,"pos":130,"troca":3698.72,"ptroca":0.0124172,"dnLac":164,"cmLac":11,"vol":28546.6,"clientesInstaveis":20},
-  {"nome":"MARCOS JEAN","sup":"Danillo","fat":145425,"dev":3654.24,"pdev":0.025128,"pos":70,"troca":1785.01,"ptroca":0.0122744,"dnLac":86,"cmLac":3,"vol":6416.36,"clientesInstaveis":21},
-  {"nome":"PEDRO HENRIQUE","sup":"Danillo","fat":146085,"dev":1197.73,"pdev":0.00819888,"pos":73,"troca":1955.99,"ptroca":0.0133894,"dnLac":76,"cmLac":4,"vol":22632.2,"clientesInstaveis":31},
-  {"nome":"GABRIEL SODRE (120)","sup":"Gleidson","fat":126271,"dev":0,"pdev":0,"pos":52,"troca":1372.32,"ptroca":0.010868,"dnLac":70,"cmLac":6,"vol":8471.44,"clientesInstaveis":19},
-  {"nome":"CESAR DIAS","sup":"Gleidson","fat":143155,"dev":1793.46,"pdev":0.0125281,"pos":70,"troca":2008.31,"ptroca":0.0140289,"dnLac":79,"cmLac":22,"vol":9925.96,"clientesInstaveis":10},
-  {"nome":"CLAUBELINO SANTOS (125)","sup":"Gleidson","fat":135109,"dev":0,"pdev":0,"pos":62,"troca":1665.29,"ptroca":0.0123255,"dnLac":66,"cmLac":8,"vol":7589.6,"clientesInstaveis":9},
-  {"nome":"EDSON CORREIA (77 99165-5655)","sup":"Gleidson","fat":114558,"dev":0,"pdev":0,"pos":77,"troca":2696.74,"ptroca":0.0235405,"dnLac":2,"cmLac":0,"vol":4903.92,"clientesInstaveis":18},
-  {"nome":"ILMA MOURA","sup":"Gleidson","fat":119662,"dev":231.22,"pdev":0.00193227,"pos":52,"troca":1548.26,"ptroca":0.0129386,"dnLac":72,"cmLac":11,"vol":21052.1,"clientesInstaveis":7},
-  {"nome":"JEFERSON SILVA (130)","sup":"Gleidson","fat":100653,"dev":6953.16,"pdev":0.0690803,"pos":43,"troca":9915.58,"ptroca":0.0985,"dnLac":15,"cmLac":0,"vol":3890.31,"clientesInstaveis":17},
-  {"nome":"JONES FERNANDES","sup":"Gleidson","fat":262895,"dev":1582,"pdev":0.00601761,"pos":88,"troca":3454.86,"ptroca":0.0131416,"dnLac":86,"cmLac":22,"vol":19268.5,"clientesInstaveis":19},
-  {"nome":"JORGE REIS (117)","sup":"Gleidson","fat":137512,"dev":1017.69,"pdev":0.00740072,"pos":74,"troca":2018.12,"ptroca":0.0146759,"dnLac":78,"cmLac":2,"vol":5710.84,"clientesInstaveis":14},
-  {"nome":"UELESSON OLIVEIRA (129)","sup":"Gleidson","fat":86464.1,"dev":578.9,"pdev":0.00669526,"pos":33,"troca":1947.57,"ptroca":0.0225246,"dnLac":0,"cmLac":0,"vol":4267.49,"clientesInstaveis":27},
-  {"nome":"MATHEUS RIBEIRO","sup":"Gleidson","fat":229451,"dev":66.41,"pdev":0.00028943,"pos":62,"troca":2776.99,"ptroca":0.0121027,"dnLac":63,"cmLac":21,"vol":38967,"clientesInstaveis":7},
-  {"nome":"PAULA RIBEIRO (101)","sup":"Gleidson","fat":79629.5,"dev":147.03,"pdev":0.00184643,"pos":41,"troca":1522.3,"ptroca":0.0191173,"dnLac":49,"cmLac":5,"vol":6133.21,"clientesInstaveis":24},
-  {"nome":"ROTA MACAUBAS","sup":"Gleidson","fat":219188,"dev":4785.84,"pdev":0.0218344,"pos":82,"troca":4652.78,"ptroca":0.0212274,"dnLac":71,"cmLac":22,"vol":15422.1,"clientesInstaveis":0},
-  {"nome":"FABIO SILVA","sup":"Israel","fat":157627,"dev":2753.31,"pdev":0.0174672,"pos":26,"troca":13671.2,"ptroca":0.0867,"dnLac":22,"cmLac":0,"vol":6944.38,"clientesInstaveis":3},
-  {"nome":"LINDIANE SOARES","sup":"Israel","fat":532567,"dev":2563.31,"pdev":0.00481312,"pos":24,"troca":50185.2,"ptroca":0.0942,"dnLac":8,"cmLac":5,"vol":19763.9,"clientesInstaveis":3},
-  {"nome":"ANDRE VINAGRE (123)","sup":"Jeiziane","fat":162298,"dev":6147.88,"pdev":0.0378802,"pos":67,"troca":3727.41,"ptroca":0.0229665,"dnLac":56,"cmLac":4,"vol":6648.86,"clientesInstaveis":23},
-  {"nome":"DAGMAR SILVA (75 98201-9217)","sup":"Jeiziane","fat":93009.9,"dev":1317.2,"pdev":0.0141619,"pos":50,"troca":1194.79,"ptroca":0.0128458,"dnLac":45,"cmLac":7,"vol":4118.67,"clientesInstaveis":16},
-  {"nome":"JULIETE LIMA (122)","sup":"Jeiziane","fat":94997.8,"dev":567.64,"pdev":0.0059753,"pos":51,"troca":1666.64,"ptroca":0.017544,"dnLac":41,"cmLac":7,"vol":3757.77,"clientesInstaveis":10},
-  {"nome":"SHEILLA MARIANO","sup":"Jeiziane","fat":90952.2,"dev":1146.6,"pdev":0.0126066,"pos":53,"troca":1553.72,"ptroca":0.0170828,"dnLac":48,"cmLac":4,"vol":4127.53,"clientesInstaveis":7},
-  {"nome":"WESCKEY FONTES","sup":"Jeiziane","fat":107400,"dev":557.6,"pdev":0.00519179,"pos":82,"troca":630.97,"ptroca":0.00587494,"dnLac":82,"cmLac":33,"vol":4559.65,"clientesInstaveis":25},
-  {"nome":"MARGARIDA","sup":"Jeiziane","fat":82077.9,"dev":1589.02,"pdev":0.0193599,"pos":53,"troca":2885.7,"ptroca":0.0351581,"dnLac":50,"cmLac":6,"vol":3542.95,"clientesInstaveis":0},
-  {"nome":"AROLDO","sup":"Lucas","fat":292074,"dev":952.86,"pdev":0.00326239,"pos":124,"troca":3434.39,"ptroca":0.0117586,"dnLac":147,"cmLac":29,"vol":15469.3,"clientesInstaveis":20},
-  {"nome":"ANDERSON NASCIMENTO","sup":"Lucas","fat":102772,"dev":1651.94,"pdev":0.0160738,"pos":42,"troca":1758.1,"ptroca":0.0171068,"dnLac":46,"cmLac":2,"vol":5894.39,"clientesInstaveis":9},
-  {"nome":"CARMILTON GOMES (118)","sup":"Lucas","fat":254741,"dev":1137.84,"pdev":0.00446665,"pos":105,"troca":3505.12,"ptroca":0.0137595,"dnLac":114,"cmLac":37,"vol":10652.3,"clientesInstaveis":10},
-  {"nome":"CLARA ARAUJO","sup":"Lucas","fat":208812,"dev":26.09,"pdev":0.000124945,"pos":59,"troca":1813.18,"ptroca":0.00868333,"dnLac":67,"cmLac":17,"vol":18675.8,"clientesInstaveis":9},
-  {"nome":"DIEGO SILVA","sup":"Lucas","fat":203735,"dev":2519.13,"pdev":0.0123648,"pos":98,"troca":2864.91,"ptroca":0.014062,"dnLac":110,"cmLac":34,"vol":7761.41,"clientesInstaveis":12},
-  {"nome":"EDENILSON FERREIRA","sup":"Lucas","fat":184877,"dev":1006.18,"pdev":0.00544243,"pos":92,"troca":2631.45,"ptroca":0.0142335,"dnLac":0,"cmLac":0,"vol":24859.6,"clientesInstaveis":11},
-  {"nome":"MAURÍCIO SILVA","sup":"Lucas","fat":216031,"dev":157.99,"pdev":0.00073133,"pos":91,"troca":2883.4,"ptroca":0.0133471,"dnLac":107,"cmLac":49,"vol":10846.1,"clientesInstaveis":9},
-  {"nome":"ALLYS ARAUJO","sup":"Rodrigo","fat":163900,"dev":861.94,"pdev":0.00525892,"pos":75,"troca":2184.74,"ptroca":0.0133297,"dnLac":64,"cmLac":27,"vol":9518.65,"clientesInstaveis":20},
-  {"nome":"CAIO VINICIUS","sup":"Rodrigo","fat":146646,"dev":373.64,"pdev":0.0025479,"pos":51,"troca":2157.03,"ptroca":0.0147091,"dnLac":51,"cmLac":13,"vol":7266.54,"clientesInstaveis":7},
-  {"nome":"GILDASIO GAMA (128)","sup":"Rodrigo","fat":161315,"dev":0,"pdev":0,"pos":61,"troca":3727.25,"ptroca":0.0231054,"dnLac":59,"cmLac":31,"vol":6315.34,"clientesInstaveis":18},
-  {"nome":"HENRIQUE RAMON","sup":"Rodrigo","fat":235616,"dev":95.85,"pdev":0.000406805,"pos":111,"troca":2952.19,"ptroca":0.0125296,"dnLac":0,"cmLac":0,"vol":13171.2,"clientesInstaveis":24},
-  {"nome":"JAILTON SANTOS (140)","sup":"Rodrigo","fat":136974,"dev":1579.52,"pdev":0.0115315,"pos":62,"troca":3111.28,"ptroca":0.0227143,"dnLac":58,"cmLac":19,"vol":5969.92,"clientesInstaveis":9},
-  {"nome":"RAUNES NASCIMENTO","sup":"Rodrigo","fat":285082,"dev":289.78,"pdev":0.00101648,"pos":123,"troca":3774.32,"ptroca":0.0132394,"dnLac":118,"cmLac":53,"vol":11368,"clientesInstaveis":22},
-  {"nome":"TADEU SANTOS","sup":"Rodrigo","fat":164850,"dev":0,"pdev":0,"pos":75,"troca":1274.61,"ptroca":0.00773194,"dnLac":54,"cmLac":23,"vol":8032.83,"clientesInstaveis":30}
+  {
+    "nome": "AGNALDO SILVA (75 99889-0341)",
+    "sup": "Andreia",
+    "fat": 43834.32,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 38.0,
+    "troca": 943.32,
+    "ptroca": 0.02152,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3686.91,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "ANDRÉ RODRIGUES",
+    "sup": "Andreia",
+    "fat": 43049.34,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 35.0,
+    "troca": 1485.63,
+    "ptroca": 0.03451,
+    "dnLac": 72.0,
+    "cmLac": 8.0,
+    "vol": 2494.53,
+    "clientesInstaveis": 4.0
+  },
+  {
+    "nome": "BRUNO OLIVEIRA",
+    "sup": "Andreia",
+    "fat": 67084.54,
+    "dev": 25.59,
+    "pdev": 0.000381,
+    "pos": 53.0,
+    "troca": 729.57,
+    "ptroca": 0.010875,
+    "dnLac": 99.0,
+    "cmLac": 3.0,
+    "vol": 3506.8,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "EVANILSON NOVAIS (107)",
+    "sup": "Andreia",
+    "fat": 45592.02,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 37.0,
+    "troca": 1277.93,
+    "ptroca": 0.02803,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 2211.65,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "EVERALDO ALVES",
+    "sup": "Andreia",
+    "fat": 50306.67,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 33.0,
+    "troca": 1585.95,
+    "ptroca": 0.031526,
+    "dnLac": 71.0,
+    "cmLac": 5.0,
+    "vol": 2627.59,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "GABRIEL PEREIRA",
+    "sup": "Andreia",
+    "fat": 51010.94,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 41.0,
+    "troca": 62.17,
+    "ptroca": 0.001219,
+    "dnLac": 52.0,
+    "cmLac": 1.0,
+    "vol": 2607.16,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "JOELSON MIRANDA",
+    "sup": "Andreia",
+    "fat": 54035.01,
+    "dev": 151.38,
+    "pdev": 0.002802,
+    "pos": 42.0,
+    "troca": 921.68,
+    "ptroca": 0.017057,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 7531.55,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "LARISSA MENDES",
+    "sup": "Andreia",
+    "fat": 33321.19,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 18.0,
+    "troca": 1003.5,
+    "ptroca": 0.030116,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 2922.03,
+    "clientesInstaveis": 4.0
+  },
+  {
+    "nome": "MARIA ELIZABETE",
+    "sup": "Andreia",
+    "fat": 39418.72,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 632.55,
+    "ptroca": 0.016047,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3356.29,
+    "clientesInstaveis": 7.0
+  },
+  {
+    "nome": "ROMILSON ALVES",
+    "sup": "Andreia",
+    "fat": 43554.44,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 20.0,
+    "troca": 1522.34,
+    "ptroca": 0.034953,
+    "dnLac": 43.0,
+    "cmLac": 7.0,
+    "vol": 3936.95,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "CAMILA FERREIRA",
+    "sup": "Danillo",
+    "fat": 77271.74,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 2341.67,
+    "ptroca": 0.030304,
+    "dnLac": 36.0,
+    "cmLac": 2.0,
+    "vol": 3717.3,
+    "clientesInstaveis": 5.0
+  },
+  {
+    "nome": "JAMILE",
+    "sup": "Danillo",
+    "fat": 20610.74,
+    "dev": 1851.14,
+    "pdev": 0.089814,
+    "pos": 16.0,
+    "troca": 646.43,
+    "ptroca": 0.031364,
+    "dnLac": 28.0,
+    "cmLac": 0.0,
+    "vol": 801.44,
+    "clientesInstaveis": 15.0
+  },
+  {
+    "nome": "HELLEN GOMES",
+    "sup": "Danillo",
+    "fat": 48316.63,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 1378.11,
+    "ptroca": 0.028522,
+    "dnLac": 56.0,
+    "cmLac": 0.0,
+    "vol": 2530.82,
+    "clientesInstaveis": 30.0
+  },
+  {
+    "nome": "EDVALDO",
+    "sup": "Danillo",
+    "fat": 33177.34,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 22.0,
+    "troca": 1056.98,
+    "ptroca": 0.031859,
+    "dnLac": 38.0,
+    "cmLac": 1.0,
+    "vol": 1845.52,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "HIAN RIBEIRO",
+    "sup": "Danillo",
+    "fat": 88062.91,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 46.0,
+    "troca": 1196.26,
+    "ptroca": 0.013584,
+    "dnLac": 69.0,
+    "cmLac": 3.0,
+    "vol": 8511.09,
+    "clientesInstaveis": 13.0
+  },
+  {
+    "nome": "MARCOS JEAN",
+    "sup": "Danillo",
+    "fat": 45199.19,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 31.0,
+    "troca": 1109.11,
+    "ptroca": 0.024538,
+    "dnLac": 40.0,
+    "cmLac": 0.0,
+    "vol": 2043.43,
+    "clientesInstaveis": 17.0
+  },
+  {
+    "nome": "PEDRO HENRIQUE",
+    "sup": "Danillo",
+    "fat": 40833.8,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 29.0,
+    "troca": 893.34,
+    "ptroca": 0.021877,
+    "dnLac": 36.0,
+    "cmLac": 2.0,
+    "vol": 5229.7,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "GABRIEL SODRE (120)",
+    "sup": "Gleidson",
+    "fat": 20959.08,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 16.0,
+    "troca": 648.1,
+    "ptroca": 0.030922,
+    "dnLac": 23.0,
+    "cmLac": 0.0,
+    "vol": 1100.95,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "CESAR DIAS",
+    "sup": "Gleidson",
+    "fat": 33170.19,
+    "dev": 80.0,
+    "pdev": 0.002412,
+    "pos": 21.0,
+    "troca": 805.86,
+    "ptroca": 0.024295,
+    "dnLac": 27.0,
+    "cmLac": 0.0,
+    "vol": 2420.73,
+    "clientesInstaveis": 12.0
+  },
+  {
+    "nome": "CLAUBELINO SANTOS (125)",
+    "sup": "Gleidson",
+    "fat": 30302.26,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 787.53,
+    "ptroca": 0.025989,
+    "dnLac": 24.0,
+    "cmLac": 3.0,
+    "vol": 1867.75,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "EDSON CORREIA (77 99165-5655)",
+    "sup": "Gleidson",
+    "fat": 31393.31,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 1113.68,
+    "ptroca": 0.035475,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 1395.74,
+    "clientesInstaveis": 15.0
+  },
+  {
+    "nome": "ILMA MOURA",
+    "sup": "Gleidson",
+    "fat": 20857.06,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 13.0,
+    "troca": 435.53,
+    "ptroca": 0.020882,
+    "dnLac": 23.0,
+    "cmLac": 0.0,
+    "vol": 4337.89,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "JEFERSON SILVA (130)",
+    "sup": "Gleidson",
+    "fat": 19484.09,
+    "dev": 4404.92,
+    "pdev": 0.226078,
+    "pos": 13.0,
+    "troca": 1173.0,
+    "ptroca": 0.060205,
+    "dnLac": 5.0,
+    "cmLac": 0.0,
+    "vol": 801.37,
+    "clientesInstaveis": 17.0
+  },
+  {
+    "nome": "JONES FERNANDES",
+    "sup": "Gleidson",
+    "fat": 53046.88,
+    "dev": 804.8,
+    "pdev": 0.015171,
+    "pos": 29.0,
+    "troca": 834.61,
+    "ptroca": 0.015733,
+    "dnLac": 31.0,
+    "cmLac": 3.0,
+    "vol": 4478.13,
+    "clientesInstaveis": 18.0
+  },
+  {
+    "nome": "JORGE REIS (117)",
+    "sup": "Gleidson",
+    "fat": 27725.77,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 622.61,
+    "ptroca": 0.022456,
+    "dnLac": 23.0,
+    "cmLac": 1.0,
+    "vol": 1215.11,
+    "clientesInstaveis": 14.0
+  },
+  {
+    "nome": "UELESSON OLIVEIRA (129)",
+    "sup": "Gleidson",
+    "fat": 15852.17,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 403.45,
+    "ptroca": 0.025451,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 771.69,
+    "clientesInstaveis": 23.0
+  },
+  {
+    "nome": "MATHEUS RIBEIRO",
+    "sup": "Gleidson",
+    "fat": 27506.77,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 15.0,
+    "troca": 481.56,
+    "ptroca": 0.017507,
+    "dnLac": 21.0,
+    "cmLac": 3.0,
+    "vol": 4124.63,
+    "clientesInstaveis": 8.0
+  },
+  {
+    "nome": "PAULA RIBEIRO (101)",
+    "sup": "Gleidson",
+    "fat": 9961.79,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 8.0,
+    "troca": 236.4,
+    "ptroca": 0.023731,
+    "dnLac": 10.0,
+    "cmLac": 0.0,
+    "vol": 644.57,
+    "clientesInstaveis": 25.0
+  },
+  {
+    "nome": "ROTA MACAUBAS",
+    "sup": "Gleidson",
+    "fat": 50820.57,
+    "dev": 467.27,
+    "pdev": 0.009195,
+    "pos": 51.0,
+    "troca": 908.81,
+    "ptroca": 0.017883,
+    "dnLac": 36.0,
+    "cmLac": 4.0,
+    "vol": 2996.87,
+    "clientesInstaveis": 0.0
+  },
+  {
+    "nome": "FABIO SILVA",
+    "sup": "Israel",
+    "fat": 35878.69,
+    "dev": 241.02,
+    "pdev": 0.006718,
+    "pos": 8.0,
+    "troca": 478.88,
+    "ptroca": 0.013347,
+    "dnLac": 8.0,
+    "cmLac": 0.0,
+    "vol": 1618.39,
+    "clientesInstaveis": 3.0
+  },
+  {
+    "nome": "LINDIANE SOARES",
+    "sup": "Israel",
+    "fat": 110512.58,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 0.0,
+    "ptroca": 0.0,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3371.27,
+    "clientesInstaveis": 3.0
+  },
+  {
+    "nome": "ANDRE VINAGRE (123)",
+    "sup": "Jeiziane",
+    "fat": 36005.61,
+    "dev": 2389.58,
+    "pdev": 0.066367,
+    "pos": 24.0,
+    "troca": 1056.45,
+    "ptroca": 0.029341,
+    "dnLac": 19.0,
+    "cmLac": 0.0,
+    "vol": 1391.82,
+    "clientesInstaveis": 19.0
+  },
+  {
+    "nome": "DAGMAR SILVA (75 98201-9217)",
+    "sup": "Jeiziane",
+    "fat": 28258.85,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 22.0,
+    "troca": 528.05,
+    "ptroca": 0.018686,
+    "dnLac": 21.0,
+    "cmLac": 2.0,
+    "vol": 1261.27,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "JULIETE LIMA (122)",
+    "sup": "Jeiziane",
+    "fat": 25829.83,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 894.27,
+    "ptroca": 0.034622,
+    "dnLac": 18.0,
+    "cmLac": 2.0,
+    "vol": 1544.15,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "SHEILLA MARIANO",
+    "sup": "Jeiziane",
+    "fat": 28258.9,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 877.88,
+    "ptroca": 0.031066,
+    "dnLac": 22.0,
+    "cmLac": 2.0,
+    "vol": 1307.39,
+    "clientesInstaveis": 8.0
+  },
+  {
+    "nome": "WESCKEY FONTES",
+    "sup": "Jeiziane",
+    "fat": 33177.01,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 30.0,
+    "troca": 281.33,
+    "ptroca": 0.008479,
+    "dnLac": 39.0,
+    "cmLac": 14.0,
+    "vol": 1419.06,
+    "clientesInstaveis": 27.0
+  },
+  {
+    "nome": "MARGARIDA",
+    "sup": "Jeiziane",
+    "fat": 24959.53,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 14.0,
+    "troca": 1826.07,
+    "ptroca": 0.073161,
+    "dnLac": 20.0,
+    "cmLac": 0.0,
+    "vol": 1466.92,
+    "clientesInstaveis": 0.0
+  },
+  {
+    "nome": "AROLDO",
+    "sup": "Lucas",
+    "fat": 70997.8,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 40.0,
+    "troca": 1217.18,
+    "ptroca": 0.017144,
+    "dnLac": 55.0,
+    "cmLac": 15.0,
+    "vol": 3724.89,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "ANDERSON NASCIMENTO",
+    "sup": "Lucas",
+    "fat": 28711.19,
+    "dev": 135.3,
+    "pdev": 0.004712,
+    "pos": 17.0,
+    "troca": 780.08,
+    "ptroca": 0.02717,
+    "dnLac": 20.0,
+    "cmLac": 0.0,
+    "vol": 1789.37,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "CARMILTON GOMES (118)",
+    "sup": "Lucas",
+    "fat": 49202.99,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 32.0,
+    "troca": 1155.09,
+    "ptroca": 0.023476,
+    "dnLac": 43.0,
+    "cmLac": 9.0,
+    "vol": 1991.68,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "CLARA ARAUJO",
+    "sup": "Lucas",
+    "fat": 37182.85,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 20.0,
+    "troca": 609.36,
+    "ptroca": 0.016388,
+    "dnLac": 25.0,
+    "cmLac": 4.0,
+    "vol": 3335.54,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "DIEGO SILVA",
+    "sup": "Lucas",
+    "fat": 34621.56,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 28.0,
+    "troca": 737.52,
+    "ptroca": 0.021302,
+    "dnLac": 37.0,
+    "cmLac": 10.0,
+    "vol": 1358.88,
+    "clientesInstaveis": 16.0
+  },
+  {
+    "nome": "EDENILSON FERREIRA",
+    "sup": "Lucas",
+    "fat": 33934.39,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 24.0,
+    "troca": 1301.97,
+    "ptroca": 0.038367,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 4349.56,
+    "clientesInstaveis": 10.0
+  },
+  {
+    "nome": "MAURÍCIO SILVA",
+    "sup": "Lucas",
+    "fat": 46458.2,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 54.0,
+    "troca": 2520.52,
+    "ptroca": 0.054254,
+    "dnLac": 98.0,
+    "cmLac": 25.0,
+    "vol": 5018.6,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "ALLYS ARAUJO",
+    "sup": "Rodrigo",
+    "fat": 37042.88,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 26.0,
+    "troca": 624.07,
+    "ptroca": 0.016847,
+    "dnLac": 25.0,
+    "cmLac": 8.0,
+    "vol": 2382.52,
+    "clientesInstaveis": 23.0
+  },
+  {
+    "nome": "CAIO VINICIUS",
+    "sup": "Rodrigo",
+    "fat": 25055.22,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 16.0,
+    "troca": 973.91,
+    "ptroca": 0.038871,
+    "dnLac": 18.0,
+    "cmLac": 4.0,
+    "vol": 1146.22,
+    "clientesInstaveis": 11.0
+  },
+  {
+    "nome": "GILDASIO GAMA (128)",
+    "sup": "Rodrigo",
+    "fat": 39396.95,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 21.0,
+    "troca": 1417.89,
+    "ptroca": 0.03599,
+    "dnLac": 20.0,
+    "cmLac": 4.0,
+    "vol": 1475.24,
+    "clientesInstaveis": 19.0
+  },
+  {
+    "nome": "HENRIQUE RAMON",
+    "sup": "Rodrigo",
+    "fat": 59976.24,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 34.0,
+    "troca": 1332.93,
+    "ptroca": 0.022224,
+    "dnLac": 0.0,
+    "cmLac": 0.0,
+    "vol": 3439.14,
+    "clientesInstaveis": 22.0
+  },
+  {
+    "nome": "JAILTON SANTOS (140)",
+    "sup": "Rodrigo",
+    "fat": 30869.54,
+    "dev": 1330.72,
+    "pdev": 0.043108,
+    "pos": 21.0,
+    "troca": 1481.56,
+    "ptroca": 0.047994,
+    "dnLac": 20.0,
+    "cmLac": 6.0,
+    "vol": 1395.74,
+    "clientesInstaveis": 9.0
+  },
+  {
+    "nome": "RAUNES NASCIMENTO",
+    "sup": "Rodrigo",
+    "fat": 57404.75,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 36.0,
+    "troca": 2223.18,
+    "ptroca": 0.038728,
+    "dnLac": 36.0,
+    "cmLac": 12.0,
+    "vol": 2351.04,
+    "clientesInstaveis": 21.0
+  },
+  {
+    "nome": "TADEU SANTOS",
+    "sup": "Rodrigo",
+    "fat": 38174.75,
+    "dev": 0.0,
+    "pdev": 0.0,
+    "pos": 23.0,
+    "troca": 1039.12,
+    "ptroca": 0.02722,
+    "dnLac": 16.0,
+    "cmLac": 5.0,
+    "vol": 4310.57,
+    "clientesInstaveis": 25.0
+  }
 ];
 
-const geralData = {
-  "nome":"GERAL",
-  "fatMeta":10129000,
-  "fatReal":9457473.2500004,
-  "posMeta":4385,
-  "posReal":3406,
-  "trocaMeta":0.0175,
-  "trocaReal":0.020657415023616357,
-  "devMeta":0.01,
-  "devReal":0.007675731993214992,
-  "dnMeta":3874,
-  "dnReal":3350,
-  "cmMeta":1156.4,
-  "cmReal":697
-};
-
-/* --- FUNÇÕES DE FORMATAÇÃO E RENDER --- */
 const fmt = v => {
   const n = Number(v || 0);
-  if (Math.abs(n) >= 1000000) return 'R$ ' + (n / 1000000).toFixed(2).replace('.', ',') + 'M';
+  if (Math.abs(n) >= 1000000) return 'R$ ' + (n / 1000000).toFixed(3).replace('.', ',') + 'M';
   if (Math.abs(n) >= 1000) return 'R$ ' + (n / 1000).toFixed(1).replace('.', ',') + 'K';
   return 'R$ ' + n.toFixed(2).replace('.', ',');
 };
-const pct = v => (Number(v || 0)*100).toFixed(1)+'%';
+const pct = v => (v*100).toFixed(1)+'%';
 const fmtVol = v => Math.round(v).toLocaleString('pt-BR')+' kg';
 const sum = (arr,fn) => arr.reduce((a,b)=>a+fn(b),0);
 const initials = n => n.substring(0,2).toUpperCase();
@@ -421,7 +1048,21 @@ const fillC = (ratio, inv=false) => {
   return ratio>=0.9?'fill-green':ratio>=0.6?'fill-yellow':'fill-red';
 };
 
-/* --- RENDER GERAL --- */
+const geralData = {
+  "nome": "GERAL",
+  "fatMeta": 10129000.0,
+  "fatReal": 2022434.76,
+  "posMeta": 4466.4,
+  "posReal": 1294.0,
+  "trocaMeta": 0.0175,
+  "trocaReal": 0.03191636203879329,
+  "devMeta": 0.01,
+  "devReal": 0.005800107984694647,
+  "dnMeta": 3907.0,
+  "dnReal": 1423.0,
+  "cmMeta": 1148.4,
+  "cmReal": 168.0
+};
 const setTopCard = (prefix, real, meta, labelMeta, isMoney=false) => {
   const ratio = meta > 0 ? real / meta : 0;
   const badgeClass = chipC(ratio).replace('chip','badge');
@@ -440,7 +1081,7 @@ setTopCard('pos', geralData.posReal, geralData.posMeta, 'Meta: ' + Math.round(ge
 setTopCard('dn', geralData.dnReal, geralData.dnMeta, 'Meta: ' + Math.round(geralData.dnMeta).toLocaleString('pt-BR') + ' PDVs');
 setTopCard('cm', geralData.cmReal, geralData.cmMeta, 'Meta: ' + Math.round(geralData.cmMeta).toLocaleString('pt-BR') + ' PDVs');
 
-/* Trocas & Dev bars */
+// Trocas & Dev bars
 const tDiv = document.getElementById('trocas-bars');
 const dDiv = document.getElementById('dev-bars');
 supervisores.forEach(s=>{
@@ -460,17 +1101,17 @@ supervisores.forEach(s=>{
   </div>`;
 });
 
-/* Industry totals */
+// Industry totals
 document.getElementById('g-dn-lac').textContent=sum(vendedores,v=>v.dnLac);
 document.getElementById('g-cm-lac').textContent=sum(vendedores,v=>v.cmLac);
 
-/* Ranking */
-const sorted=[...supervisores].filter(s=>s.nome!=='GERAL').sort((a,b)=>(b.fatReal/b.fatMeta)-(a.fatReal/a.fatMeta));
+// Ranking
+const sorted=[...supervisores].sort((a,b)=>(b.fatReal/b.fatMeta)-(a.fatReal/a.fatMeta));
 const tbody=document.getElementById('rankingBody');
 sorted.forEach((s,i)=>{
   const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
   const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`${i+1}º`;
-  const supVends=vendedores.filter(v=>v.sup.toLowerCase().includes(s.nome.toLowerCase()));
+  const supVends=vendedores.filter(v=>v.sup===s.nome);
   const volT=sum(supVends,v=>v.vol);
   tbody.innerHTML+=`<tr>
     <td style="font-size:16px;font-weight:700;">${medal}</td>
@@ -499,12 +1140,13 @@ tbody.innerHTML+=`<tr class="total-row">
   <td>${geralData.cmReal}</td><td><span class="chip ${chipC(geralData.cmReal/geralData.cmMeta)}">${pct(geralData.cmReal/geralData.cmMeta)}</span></td>
 </tr>`;
 
-/* Individual supervisor views */
+// Individual supervisor views
 const supContainer=document.getElementById('sup-views');
-supervisores.filter(s=>s.nome!=='GERAL').forEach(s=>{
-  const vends=vendedores.filter(v=>v.sup.toLowerCase().includes(s.nome.toLowerCase())).sort((a,b)=>b.fat-a.fat);
+supervisores.forEach(s=>{
+  const vends=vendedores.filter(v=>v.sup===s.nome).sort((a,b)=>b.fat-a.fat);
   const fp=s.fatReal/s.fatMeta, pp=s.posReal/s.posMeta, dp=s.dnReal/s.dnMeta, cp=s.cmReal/s.cmMeta;
   const dnLacT=sum(vends,v=>v.dnLac), cmLacT=sum(vends,v=>v.cmLac);
+
   const volT=sum(vends,v=>v.vol);
   const fatT=sum(vends,v=>v.fat);
   const posT=sum(vends,v=>v.pos);
@@ -624,7 +1266,7 @@ function showView(id,el){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   const t=document.getElementById('view-'+id)||document.getElementById('view-sup-'+id);
   if(t) t.classList.add('active');
-  if(el) el.classList.add('active');
+  el.classList.add('active');
 }
 </script>
 </body>
